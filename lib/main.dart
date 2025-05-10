@@ -1,14 +1,18 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:skility_x/firebase_options.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skility_x/core/config/Di.dart';
+import 'package:skility_x/core/config/route_config.dart';
+import 'package:skility_x/view/themes/theme_manager.dart';
+import 'package:toastification/toastification.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  runApp(const SkilityX());
+  await InitDependencies.initDotEnv();
+
+  await InitDependencies.initFirebase();
+
+  runApp(ProviderScope(child: const SkilityX()));
 }
 
 class SkilityX extends StatefulWidget {
@@ -21,6 +25,17 @@ class SkilityX extends StatefulWidget {
 class _SkilityXState extends State<SkilityX> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    // optional but context independent
+    return ToastificationWrapper(
+      child: SafeArea(
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          themeMode: ThemeMode.dark,
+          theme: ThemeManager.darkTheme,
+          initialRoute: RouteEnum.splash.path,
+          routes: appRoutes,
+        ),
+      ),
+    );
   }
 }

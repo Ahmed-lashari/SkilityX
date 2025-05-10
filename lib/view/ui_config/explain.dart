@@ -1,0 +1,3 @@
+
+
+//  **ui-config**: This folder contains the configuration files for the UI components of the application. It includes the models and lists of models that are used in the screens during runtime. For example, if you have a screen that displays a list of products, you would define the product model and its properties in this folder. This allows for better organization and separation of concerns within the codebase.
