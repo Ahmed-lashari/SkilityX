@@ -1,5 +1,5 @@
 name: skility_x
-description: "A new Flutter project."
+description: "A Flutter app for skill exchange, connect, offer, and request skills using Firebase, Riverpod, and MVVM architecture. Includes push notifications, caching and complete local testing support"
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
