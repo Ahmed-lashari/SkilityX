@@ -49,7 +49,8 @@ app.*.map.json
 # firebase root configuration
 firebase.json
 
-# firebase related files
+
+# firebase lib file
 lib/firebase_options.dart
 
 # in ios
