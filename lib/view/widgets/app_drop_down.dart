@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skility_x/constants/app-icons.dart';
 import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/core/utils.dart/validators.dart';
 import 'package:skility_x/view-model/data_providers/view/widgets/drop_down_list.dart';
 import 'package:skility_x/view-model/data_providers/view/widgets/focus_nodes.dart';
+import 'package:skility_x/view/widgets/image_ui.dart';
 
-class YapDropdown extends ConsumerStatefulWidget {
+class myDropDwon extends ConsumerStatefulWidget {
   final String hintText;
   final IconData prefixIcon;
   final String dropdwonKey;
   final String? nextFocusKey;
 
-  const YapDropdown({
+  const myDropDwon({
     super.key,
     required this.hintText,
     required this.prefixIcon,
@@ -20,10 +22,10 @@ class YapDropdown extends ConsumerStatefulWidget {
   });
 
   @override
-  ConsumerState<YapDropdown> createState() => _YapDropdownState();
+  ConsumerState<myDropDwon> createState() => _YapDropdownState();
 }
 
-class _YapDropdownState extends ConsumerState<YapDropdown> {
+class _YapDropdownState extends ConsumerState<myDropDwon> {
   @override
   Widget build(BuildContext context) {
     final items = ref.watch(dropdownItemsProvider(widget.dropdwonKey));
@@ -33,17 +35,22 @@ class _YapDropdownState extends ConsumerState<YapDropdown> {
     debugPrint(currentValue);
 
     return DropdownButtonFormField<String>(
+      icon: CustomIcon(
+          icon: AppImageIcons.downarrow,
+          color: AppColors.secondary,
+          height: 25,
+          width: 25),
       items: items
           .map((item) => DropdownMenuItem(
                 value: item.trim(),
                 child: Text(item.trim(),
-                    style: TextStyle(color: AppColors.error, fontSize: 16)),
+                    style: TextStyle(color: AppColors.primary, fontSize: 16)),
               ))
           .toList(),
       decoration: InputDecoration(
         prefixIcon: Icon(widget.prefixIcon, size: 20),
         hintText: widget.hintText,
-        // hintStyle: TextStyle(color: AppColors.charcoal, fontSize: 10),
+        hintStyle: TextStyle(color: AppColors.secondary, fontSize: 10),
       ),
       focusNode: currFocus,
       dropdownColor: AppColors.unselectedItemIcon,

@@ -2,8 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:skility_x/constants/app-icons.dart';
 import 'package:skility_x/constants/app_colors.dart';
+import 'package:skility_x/constants/app_keys/hero_keys.dart';
+import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/view/themes/theme_conts/typography.dart';
 import 'package:skility_x/view/widgets/custom_progress_indicator.dart';
+import 'package:skility_x/view/widgets/image_ui.dart';
 
 class CustomWidgets {
   static Widget actionButton({
@@ -103,6 +106,19 @@ class CustomWidgets {
           ),
         ),
       ),
+    );
+  }
+
+  static Widget backNavigationIconButt(BuildContext context) {
+    return Hero(
+      tag: HeroKeys.iconButtonKey,
+      child: IconButton(
+          onPressed: () => AppNavigator.navigateBack(context),
+          icon: CustomIcon(
+              icon: AppImageIcons.leftarrow,
+              color: AppColors.onBackground,
+              height: 25,
+              width: 25)),
     );
   }
 }
