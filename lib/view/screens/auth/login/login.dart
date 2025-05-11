@@ -4,7 +4,6 @@ import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/constants/app_keys/text_controller_keys.dart';
 import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/core/utils.dart/validators.dart';
-import 'package:skility_x/view/themes/theme_conts/typography.dart';
 import 'package:skility_x/view/widgets/app_textfield.dart';
 import 'package:skility_x/view/widgets/custom_widgets.dart';
 
@@ -62,9 +61,9 @@ class _LoginUiState extends State<LoginUi> {
             onPressed: () {},
             child: Text('Forgot Password?',
                 style: TextStyle(
-                    color: AppColors.secondary,
-                    fontSize: 12,
-                    fontFamily: AppTypography.interRegular)))
+                  color: AppColors.secondary,
+                  fontSize: 12,
+                )))
       ],
     );
   }

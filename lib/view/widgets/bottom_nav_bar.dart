@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/view/themes/theme_conts/typography.dart';
-import 'package:skility_x/view/ui_config/widgets/bottom_nav_bar.dart';
+import 'package:skility_x/view/ui_config/view/widgets/bottom_nav_bar.dart';
 
 final selectedIndexProvider = StateProvider<int>((ref) => 0);
 

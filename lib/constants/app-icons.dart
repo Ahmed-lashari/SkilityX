@@ -33,4 +33,16 @@ class AppStaticIcons {
 
   // other
   static final IconData rocket = FontAwesomeIcons.rocketchat;
+  static final IconData search = FontAwesomeIcons.search;
+}
+
+class AppImageIcons {
+  static const String singing = "assets/skill_icons/singing.png";
+  static const String dancing = "assets/skill_icons/dancing.png";
+  static const String music = "assets/skill_icons/guitar.png";
+  static const String academics = "assets/skill_icons/academic.png";
+  static const String coding = "assets/skill_icons/coding.png";
+  static const String data_analyss = "assets/skill_icons/data_analysis.png";
+  static const String writing = "assets/skill_icons/pen.png";
+  static const String painting = "assets/skill_icons/sketching.png";
 }

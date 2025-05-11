@@ -24,7 +24,7 @@ AppBar myAppBar({
 
         if (selectedIndex == 0) {
           return myTextField(
-              prefixIcon: AppStaticIcons.rocket,
+              prefixIcon: AppStaticIcons.search,
               contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
               hintText: 'Search Skills...',
               controllerKey: TextControllerKeys.searchSkills);

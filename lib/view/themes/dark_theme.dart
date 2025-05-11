@@ -68,7 +68,7 @@ class DarkTheme {
       prefixIconColor: AppColors.secondary,
       prefixStyle: TextStyle(color: AppColors.secondary),
       hintStyle: TextStyle(
-          color: AppColors.onSecondary, fontFamily: AppTypography.interRegular),
+          color: AppColors.onSecondary, fontFamily: AppTypography.interMedium),
       hintFadeDuration: const Duration(seconds: 1),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(14),

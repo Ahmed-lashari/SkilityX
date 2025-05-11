@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:skility_x/constants/app_colors.dart';
-import 'package:skility_x/view/themes/theme_conts/typography.dart';
 import 'package:skility_x/view/widgets/custom_scaffold.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -26,7 +25,6 @@ class _SplashScreenState extends State<SplashScreen> {
                 Text(
                   "SkilityX",
                   style: TextStyle(
-                      fontFamily: AppTypography.interLight,
                       fontSize: 40,
                       color: AppColors.secondary,
                       fontWeight: FontWeight.bold),
