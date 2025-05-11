@@ -7,6 +7,32 @@ final dropdownItemsProvider =
   switch (key) {
     case DropDownKeys.genders:
       return ['Female', 'Male', 'Other'];
+
+    case DropDownKeys.searchSkills:
+      final skills = [
+        'Mathematics',
+        'History',
+        'Language',
+        'Science',
+        'Music',
+        'Painting',
+        'Photography / Editing',
+        'Videography / Editing',
+        'Arabic',
+        'Chinese',
+        'English',
+        'Urdu',
+        'Japanese',
+        'Hindi',
+        'Artificial Intelligence',
+        'App - Development',
+        'Web - Development',
+        'Cyber Security',
+        'Robotics',
+        'UI / UX',
+      ];
+      skills.sort();
+      return skills;
     default:
       return [];
   }

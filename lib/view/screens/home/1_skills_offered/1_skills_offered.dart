@@ -3,9 +3,9 @@ import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
 import 'package:skility_x/view/ui_config/view/screens/home/1_skills_offered.dart';
-import 'package:skility_x/view/ui_config/view/screens/home/explore_skills_ui.dart';
 import 'package:skility_x/view/widgets/custom_scaffold.dart';
 import 'package:skility_x/view/widgets/image_ui.dart';
+import 'package:skility_x/view/widgets/skills_banner.dart';
 
 class SkillsScreen extends StatefulWidget {
   const SkillsScreen({super.key});
@@ -57,7 +57,7 @@ class _SkillsScreenState extends State<SkillsScreen> {
             ),
             GestureDetector(
               onTap: () => AppNavigator.navigateTo(context,
-                  sRoute: RouteEnum.filterSkills.path),
+                  sRoute: RouteEnum.filterMenu.path),
               child: Text("View All",
                   style: TextStyle(
                       fontSize: 12,
@@ -84,7 +84,6 @@ class _SkillsScreenState extends State<SkillsScreen> {
         ? _skillsList[0].color
         : _skillsList[index + 1].color;
 
-    debugPrint(iconColor.toString());
     return CategoryCard(
       icon: _skillsList[index].icon,
       iconColor: iconColor,

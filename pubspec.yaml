@@ -85,7 +85,18 @@ flutter:
   assets:
     - .env
     - assets/skility_x_icon/skility_x.png
+
+    # for home skills screen
     - assets/skill_icons/
+
+    # filter skills
+    - assets/academic_skills/
+    - assets/artistic_skills/
+    - assets/languages/
+    - assets/tech_skills/
+
+    # arrows
+    - assets/arrows/
   #   - images/a_dot_ham.jpeg
 
   fonts:
