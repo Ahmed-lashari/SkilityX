@@ -1,6 +1,7 @@
-import 'dart:ui';
+import 'package:flutter/material.dart';
 
 class AppColors {
+  static const transparent = Colors.transparent; // Bright Yellow
   // core
   static const primary = Color(0xFFFFD600); // Bright Yellow
   static const onPrimary = Color(0xFF000000); // Black
