@@ -26,10 +26,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
   Widget build(BuildContext context) {
     return CustomScaffold(
       body: Column(
-        children: [
-          _buildInfoUi(),
-          _buildAuthUi(),
-        ],
+        children: [_buildInfoUi(), _buildAuthUi()],
       ),
     );
   }
@@ -92,7 +89,6 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
             const SizedBox.shrink(),
             toggleButton,
             _displayPageViewContent(),
-            const SizedBox.shrink(),
           ],
         ),
       ),

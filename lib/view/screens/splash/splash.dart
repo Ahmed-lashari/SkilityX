@@ -1,8 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:skility_x/constants/app_colors.dart';
-import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/view/themes/theme_conts/typography.dart';
 import 'package:skility_x/view/widgets/custom_scaffold.dart';
 
@@ -43,10 +40,5 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-
-    Timer(
-        Duration(seconds: 2),
-        () => AppNavigator.navigateTo(context,
-            sRoute: RouteEnum.authScreen.path));
   }
 }

@@ -50,11 +50,12 @@ class _CustomBottomNavBarState extends ConsumerState<CustomBottomNavBar> {
                                     ref.watch(selectedIndexProvider);
                                 final isSelected = index == selectedIndex;
                                 final item = widget.items[index];
-                                debugPrint('building container');
+                                debugPrint(
+                                    'building bottom menu container only');
                                 return AnimatedContainer(
                                   duration: const Duration(milliseconds: 300),
                                   curve: Curves.easeInOut,
-                                  padding: const EdgeInsets.all(20),
+                                  padding: const EdgeInsets.all(15),
                                   decoration: BoxDecoration(
                                     color: isSelected
                                         ? Colors.yellow
@@ -64,23 +65,27 @@ class _CustomBottomNavBarState extends ConsumerState<CustomBottomNavBar> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      Icon(item.icon,
-                                          color: isSelected
-                                              ? Colors.blue
-                                              : Colors.black),
+                                      if (item.icon != null)
+                                        Icon(item.icon,
+                                            size: 25,
+                                            color: isSelected
+                                                ? Colors.blue
+                                                : Colors.black),
                                       AnimatedSize(
                                         duration:
                                             const Duration(milliseconds: 300),
                                         curve: Curves.easeInOut,
-                                        child: isSelected
+                                        child: (isSelected) &&
+                                                (item.label != null)
                                             ? Padding(
                                                 padding: const EdgeInsets.only(
                                                     left: 8.0),
                                                 child: Text(
-                                                  item.label,
+                                                  item.label ?? "",
                                                   style: TextStyle(
                                                     fontFamily: AppTypography
-                                                        .interRegular,
+                                                        .interMedium,
+                                                    fontSize: 15,
                                                     color: Colors.black,
                                                     fontWeight: FontWeight.w500,
                                                   ),

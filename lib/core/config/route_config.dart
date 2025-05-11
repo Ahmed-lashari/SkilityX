@@ -2,9 +2,10 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:skility_x/view/screens/auth/auth_screen.dart';
+import 'package:skility_x/view/screens/home/bottom_tabs.dart';
 import 'package:skility_x/view/screens/splash/splash.dart';
 
-enum RouteEnum { splash, authScreen, signup }
+enum RouteEnum { splash, authScreen, homeScreen }
 
 extension RouteEnumExtension on RouteEnum {
   String get path {
@@ -13,10 +14,8 @@ extension RouteEnumExtension on RouteEnum {
         return "/";
       case RouteEnum.authScreen:
         return "/loginScreen";
-      case RouteEnum.signup:
-        return "/signup";
-      // case RouteEnum.homeScreen:
-      //   return "/homeScreen";
+      case RouteEnum.homeScreen:
+        return "/homeScreen";
     }
   }
 }
@@ -24,7 +23,7 @@ extension RouteEnumExtension on RouteEnum {
 final appRoutes = {
   RouteEnum.splash.path: (context) => SplashScreen(),
   RouteEnum.authScreen.path: (context) => AuthScreen(),
-  // RouteEnum.homeScreen.path: (context) => HomeScreen(),
+  RouteEnum.homeScreen.path: (context) => HomeTabs(),
 };
 
 class AppNavigator {

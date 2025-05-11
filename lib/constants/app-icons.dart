@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class AppStaticIcons {
   static const IconData person = FontAwesomeIcons.user; // Person
@@ -20,4 +21,16 @@ class AppStaticIcons {
   // logos
   static const IconData gmail = FontAwesomeIcons.google; // gmail
   static const IconData github = FontAwesomeIcons.github; // github
+
+  // home screen
+  static final IconData homeList = MdiIcons.formatListBulleted;
+  static final IconData skills = MdiIcons.calendarOutline;
+  static final IconData user = MdiIcons.accountOutline;
+  // person
+
+  // drawer
+  static final IconData drawer = FontAwesomeIcons.bars;
+
+  // other
+  static final IconData rocket = FontAwesomeIcons.rocketchat;
 }
