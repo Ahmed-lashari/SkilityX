@@ -61,11 +61,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
             Text(
               "Go ahead and continue to\nyour account.",
               textAlign: TextAlign.start,
-              style: TextStyle(
-                color: AppColors.onSecondary,
-                fontSize: 20,
-                fontFamily: AppTypography.interRegular,
-              ),
+              style: TextStyle(color: AppColors.onSecondary, fontSize: 20),
             ),
             // SizedBox.shrink()
           ],

@@ -39,18 +39,20 @@ class _GradientCircularProgressState extends State<GradientCircularProgress>
           shaderCallback: (Rect bounds) {
             return SweepGradient(
               colors: [
-                AppColors.error,
+                // AppColors.error,
+                AppColors.secondary,
                 AppColors.unselectedItemIcon,
                 AppColors.primary,
-                AppColors.secondary,
+                // AppColors.error,
               ],
-              tileMode: TileMode.clamp,
+              tileMode: TileMode.mirror,
             ).createShader(bounds);
           },
           child: const CircularProgressIndicator(
-            strokeWidth: 4,
-            valueColor: AlwaysStoppedAnimation<Color>(AppColors.onBackground),
-            backgroundColor: AppColors.onBackground,
+            strokeWidth: 6,
+            strokeCap: StrokeCap.round,
+            valueColor: AlwaysStoppedAnimation<Color>(AppColors.error),
+            backgroundColor: AppColors.transparent,
           ),
         ),
       ),

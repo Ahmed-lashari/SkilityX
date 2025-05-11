@@ -98,10 +98,7 @@ class CustomWidgets {
             children: [
               Icon(icon, color: AppColors.onSecondary, size: 20),
               Text(text,
-                  style: TextStyle(
-                      color: AppColors.onSecondary,
-                      fontSize: 15,
-                      fontFamily: AppTypography.interRegular))
+                  style: TextStyle(color: AppColors.onSecondary, fontSize: 15))
             ],
           ),
         ),

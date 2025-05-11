@@ -85,6 +85,7 @@ flutter:
   assets:
     - .env
     - assets/skility_x_icon/skility_x.png
+    - assets/skill_icons/
   #   - images/a_dot_ham.jpeg
 
   fonts:
