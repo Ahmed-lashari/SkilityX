@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skility_x/core/config/Di.dart';
 import 'package:skility_x/core/config/route_config.dart';
@@ -12,7 +13,10 @@ void main() async {
 
   await InitDependencies.initFirebase();
 
-  runApp(ProviderScope(child: const SkilityX()));
+  InitDependencies.initOnError();
+
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) => runApp(ProviderScope(child: const SkilityX())));
 }
 
 class SkilityX extends StatefulWidget {

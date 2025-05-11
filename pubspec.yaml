@@ -82,6 +82,7 @@ flutter:
   uses-material-design: true
 
   assets:
+    - .env
     - assets/skility_x_icon/skility_x.png
   #   - images/a_dot_ham.jpeg
 

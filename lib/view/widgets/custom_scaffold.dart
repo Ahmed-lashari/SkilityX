@@ -1,35 +1,43 @@
 import 'package:flutter/material.dart';
 
 class CustomScaffold extends StatefulWidget {
-  final AppBar? appBar;
-  final Widget? body;
-  final Widget? bottomNavigationBar;
+  final bool isScrollable;
   final double hPadding;
   final double vPadding;
+  final Color? backGroundColor;
+  final PreferredSizeWidget? appBar;
+  final Widget? body;
 
-  const CustomScaffold(
-      {super.key,
-      this.appBar,
-      this.body,
-      this.bottomNavigationBar,
-      this.hPadding = 10,
-      this.vPadding = 0});
+  const CustomScaffold({
+    super.key,
+    this.backGroundColor,
+    this.hPadding = 10,
+    this.vPadding = 0,
+    this.appBar,
+    this.body,
+    this.isScrollable = false,
+  });
 
   @override
-  State<CustomScaffold> createState() => mymScaffoldState();
+  State<CustomScaffold> createState() => _CustomScaffoldState();
 }
 
-class mymScaffoldState extends State<CustomScaffold> {
+class _CustomScaffoldState extends State<CustomScaffold> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
+      backgroundColor: widget.backGroundColor,
       appBar: widget.appBar,
       body: Padding(
         padding: EdgeInsets.symmetric(
             horizontal: widget.hPadding, vertical: widget.vPadding),
-        child: widget.body,
+        child: widget.isScrollable
+            ? SingleChildScrollView(
+                child: widget.body ?? const SizedBox.shrink(),
+              )
+            : widget.body ?? const SizedBox.shrink(),
       ),
-      bottomNavigationBar: widget.bottomNavigationBar,
     );
   }
 }

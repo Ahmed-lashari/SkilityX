@@ -17,7 +17,7 @@ class AppTypography {
     bodyLarge: _buildMediumText(),
     labelLarge: _buildMediumText(),
 
-    // Medium
+    // regular
     displayMedium: _buildRegularText(),
     headlineMedium: _buildRegularText(),
     titleMedium: _buildRegularText(),

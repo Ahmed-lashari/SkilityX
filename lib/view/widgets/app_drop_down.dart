@@ -1,0 +1,63 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skility_x/constants/app_colors.dart';
+import 'package:skility_x/core/utils.dart/validators.dart';
+import 'package:skility_x/view-model/data_providers/view/widgets/drop_down_list.dart';
+import 'package:skility_x/view-model/data_providers/view/widgets/focus_nodes.dart';
+
+class YapDropdown extends ConsumerStatefulWidget {
+  final String hintText;
+  final IconData prefixIcon;
+  final String dropdwonKey;
+  final String? nextFocusKey;
+
+  const YapDropdown({
+    super.key,
+    required this.hintText,
+    required this.prefixIcon,
+    required this.dropdwonKey,
+    this.nextFocusKey,
+  });
+
+  @override
+  ConsumerState<YapDropdown> createState() => _YapDropdownState();
+}
+
+class _YapDropdownState extends ConsumerState<YapDropdown> {
+  @override
+  Widget build(BuildContext context) {
+    final items = ref.watch(dropdownItemsProvider(widget.dropdwonKey));
+    final currFocus = ref.watch(focusNodeProvider(widget.dropdwonKey));
+    final currentValue =
+        ref.watch(formValuesProvider.select((map) => map[widget.dropdwonKey]));
+    debugPrint(currentValue);
+
+    return DropdownButtonFormField<String>(
+      items: items
+          .map((item) => DropdownMenuItem(
+                value: item.trim(),
+                child: Text(item.trim(),
+                    style: TextStyle(color: AppColors.error, fontSize: 16)),
+              ))
+          .toList(),
+      decoration: InputDecoration(
+        prefixIcon: Icon(widget.prefixIcon, size: 20),
+        hintText: widget.hintText,
+        // hintStyle: TextStyle(color: AppColors.charcoal, fontSize: 10),
+      ),
+      focusNode: currFocus,
+      dropdownColor: AppColors.unselectedItemIcon,
+      isExpanded: true,
+      onChanged: (v) {
+        ref.read(formValuesProvider.notifier).setValue(widget.dropdwonKey, v);
+        if (widget.nextFocusKey != null) {
+          final nextFocus = ref.read(focusNodeProvider(widget.nextFocusKey!));
+          FocusScope.of(context).requestFocus(nextFocus);
+        } else {
+          currFocus.unfocus();
+        }
+      },
+      validator: (v) => Validators.requiredField(v),
+    );
+  }
+}
