@@ -23,6 +23,7 @@ class _SignUpUiState extends State<SignUpUi> {
         child: Column(
           spacing: 16,
           children: [
+            const SizedBox.shrink(),
             myTextField(
                 prefixIcon: AppStaticIcons.person,
                 hintText: "Name",
@@ -41,7 +42,8 @@ class _SignUpUiState extends State<SignUpUi> {
                 label: 'Register',
                 onPressed: () => Validators.validateForm(formKey)),
             CustomWidgets.myDivider(text: "Or register using"),
-            CustomWidgets.OAuthOptions()
+            CustomWidgets.OAuthOptions(),
+            const SizedBox.shrink(),
           ],
         ),
       ),

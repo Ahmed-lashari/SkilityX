@@ -12,12 +12,14 @@ class myTextField extends ConsumerWidget {
   final String? nextFocusKey;
   final TextInputType keyboardType;
   final bool obscureText;
+  final EdgeInsets? contentPadding;
   final String? Function(String?)? validator;
 
   const myTextField({
     super.key,
     required this.hintText,
     this.prefixIcon,
+    this.contentPadding,
     required this.controllerKey,
     this.nextFocusKey,
     this.validator,
@@ -38,6 +40,7 @@ class myTextField extends ConsumerWidget {
       obscuringCharacter: "*",
       style: const TextStyle(fontSize: 16),
       decoration: InputDecoration(
+        contentPadding: contentPadding,
         prefixIcon: prefixIcon != null ? Icon(prefixIcon, size: 20) : null,
         hintText: hintText,
       ),

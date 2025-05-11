@@ -1,127 +1,69 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skility_x/constants/app-icons.dart';
+import 'package:skility_x/core/utils.dart/utils.dart';
+import 'package:skility_x/view/screens/home/2_my_skills/my_skills.dart';
+import 'package:skility_x/view/screens/home/3_profile/user_profile.dart';
+import 'package:skility_x/view/screens/home/1_skills_offered/skills_offered.dart';
 import 'package:skility_x/view/ui_config/widgets/bottom_nav_bar.dart';
 import 'package:skility_x/view/widgets/bottom_nav_bar.dart';
+import 'package:skility_x/view/widgets/custom_appbar.dart';
+import 'package:skility_x/view/widgets/custom_scaffold.dart';
+import 'package:skility_x/view/widgets/keep_alive_wrapper.dart';
 
-class HomeTabs extends StatefulWidget {
+class HomeTabs extends ConsumerStatefulWidget {
   const HomeTabs({super.key});
 
   @override
-  State<HomeTabs> createState() => _HomeTabsState();
+  ConsumerState<HomeTabs> createState() => _HomeTabsState();
 }
 
-class _HomeTabsState extends State<HomeTabs> {
+class _HomeTabsState extends ConsumerState<HomeTabs> {
+  final GlobalKey<CustomScaffoldState> persistentkey =
+      GlobalKey<CustomScaffoldState>();
+
+  final screens = [
+    KeepAliveWrapper(child: SkillsScreen()),
+    KeepAliveWrapper(child: mySkills()),
+    KeepAliveWrapper(child: Profile()),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [_buildBodyWidgets(), _buildBottomnavBar()],
+    debugPrint('home nav bar tabs screen');
+
+    return CustomScaffold(
+      key: persistentkey,
+      drawer: Drawer(),
+      appBar: myAppBar(
+        context: context,
+        persistentkey: persistentkey,
+        actions: [
+          IconButton(
+              onPressed: () => Utils.openDrawer(persistentkey),
+              icon: Icon(AppStaticIcons.drawer)),
+        ],
       ),
+      body: Stack(children: [_buildBodyWidgets(), _buildBottomnavBar()]),
     );
   }
 
   Widget _buildBodyWidgets() {
     return Positioned.fill(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-            Text('Your Screen Content'),
-          ],
-        ),
+      child: Stack(
+        children: List.generate(screens.length, (index) {
+          return Consumer(
+            builder: (context, ref, child) {
+              final selectedIndex = ref.watch(selectedIndexProvider);
+              return Offstage(
+                  offstage: selectedIndex != index,
+                  child: TickerMode(
+                    enabled: selectedIndex == index,
+                    child: screens[index],
+                  ));
+            },
+          );
+        }),
       ),
     );
   }
@@ -133,12 +75,12 @@ class _HomeTabsState extends State<HomeTabs> {
       bottom: 0,
       child: CustomBottomNavBar(
         items: [
-          BottomNavItem(icon: Icons.home, label: "Skill offers"),
-          BottomNavItem(icon: Icons.search, label: "Skill Requests"),
-          BottomNavItem(icon: Icons.message, label: "Reviewes"),
+          BottomNavItem(icon: AppStaticIcons.homeList, label: "Skills"),
+          BottomNavItem(icon: AppStaticIcons.skills, label: "Requests"),
+          BottomNavItem(icon: AppStaticIcons.user, label: "Profile"),
         ],
         onItemSelected: (index) {
-          // Handle tab switch
+          ref.read(selectedIndexProvider.notifier).state = index;
         },
       ),
     );
