@@ -1,6 +1,6 @@
 import 'package:skility_x/constants/app-icons.dart';
 import 'package:skility_x/constants/app_colors.dart';
-import 'package:skility_x/view/ui_config/view/screens/home/1_skills_offered.dart';
+import 'package:skility_x/view/ui_config/view/screens/home/1_skills/1_skills_offered.dart';
 
 class FilterMenuConfig {
   static List<SkillsBanners> getAcademicSkillsBanners() {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
-import 'package:skility_x/view/screens/home/1_skills_offered/3_filter_screen.dart';
+import 'package:skility_x/view/screens/home/1_skills/3_filter_screen.dart';
 import 'package:skility_x/view/widgets/image_ui.dart';
 
 class CategoryCard extends StatelessWidget {
@@ -24,7 +24,7 @@ class CategoryCard extends StatelessWidget {
       child: InkWell(
         splashColor: iconColor.withAlpha(100),
         onTap: () => AppNavigator.navigateTo(context,
-            wRoute: FilterScreen(skillKey: label)),
+            wRoute: FilterScreen(skillKey: label, color: iconColor)),
         borderRadius: BorderRadius.circular(16),
         child: Ink(
           height: Utils.getHeight(context) * 0.2,

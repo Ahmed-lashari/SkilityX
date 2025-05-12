@@ -109,14 +109,15 @@ class CustomWidgets {
     );
   }
 
-  static Widget backNavigationIconButt(BuildContext context) {
+  static Widget backNavigationIconButt(
+      {required BuildContext context, Color? iconColor}) {
     return Hero(
       tag: HeroKeys.iconButtonKey,
       child: IconButton(
           onPressed: () => AppNavigator.navigateBack(context),
           icon: CustomIcon(
               icon: AppImageIcons.leftarrow,
-              color: AppColors.onBackground,
+              color: iconColor ?? AppColors.onBackground,
               height: 25,
               width: 25)),
     );

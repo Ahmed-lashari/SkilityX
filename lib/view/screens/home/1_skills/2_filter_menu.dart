@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:skility_x/constants/app-icons.dart';
 import 'package:skility_x/constants/app_keys/drop_down_keys.dart';
-import 'package:skility_x/view/ui_config/view/screens/home/1_skills_offered.dart';
-import 'package:skility_x/view/ui_config/view/screens/home/2_filter_menu.dart';
+import 'package:skility_x/view/ui_config/view/screens/home/1_skills/1_skills_offered.dart';
+import 'package:skility_x/view/ui_config/view/screens/home/1_skills/2_filter_menu.dart';
 import 'package:skility_x/view/widgets/app_drop_down.dart';
 import 'package:skility_x/view/widgets/custom_scaffold.dart';
 import 'package:skility_x/view/widgets/custom_widgets.dart';
@@ -47,7 +47,7 @@ class _FilterSkillsState extends State<FilterSkills> {
   Widget _header() {
     return Row(
       children: [
-        CustomWidgets.backNavigationIconButt(context),
+        CustomWidgets.backNavigationIconButt(context: context),
         Expanded(
           child: myDropDwon(
               prefixIcon: AppStaticIcons.search,
@@ -66,7 +66,7 @@ class _FilterSkillsState extends State<FilterSkills> {
       children: [
         Text(
           " " + label,
-          style: TextStyle(fontSize: 20),
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
@@ -85,7 +85,6 @@ class _FilterSkillsState extends State<FilterSkills> {
     final iconColor =
         (index == list.length - 1) ? list[0].color : list[index + 1].color;
 
-    debugPrint(iconColor.toString());
     return CategoryCard(
       icon: list[index].icon,
       iconColor: iconColor,

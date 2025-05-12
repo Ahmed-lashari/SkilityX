@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
-import 'package:skility_x/view/ui_config/view/screens/home/1_skills_offered.dart';
+import 'package:skility_x/view/ui_config/view/screens/home/1_skills/1_skills_offered.dart';
 import 'package:skility_x/view/widgets/custom_scaffold.dart';
 import 'package:skility_x/view/widgets/image_ui.dart';
 import 'package:skility_x/view/widgets/skills_banner.dart';
