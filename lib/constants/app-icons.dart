@@ -34,6 +34,7 @@ class AppStaticIcons {
   // other
   static final IconData rocket = FontAwesomeIcons.rocketchat;
   static final IconData search = FontAwesomeIcons.search;
+  static final IconData descriptionAbout = FontAwesomeIcons.fileLines;
 }
 
 class AppImageIcons {

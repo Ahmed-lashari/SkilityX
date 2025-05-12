@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:skility_x/view/screens/auth/auth_screen.dart';
-import 'package:skility_x/view/screens/home/1_skills_offered/2_filter_menu.dart';
+import 'package:skility_x/view/screens/home/1_skills/2_filter_menu.dart';
 import 'package:skility_x/view/screens/home/bottom_tabs.dart';
 import 'package:skility_x/view/screens/splash/splash.dart';
 

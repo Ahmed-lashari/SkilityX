@@ -4,6 +4,9 @@ class TextControllerKeys {
   static String emailKey = "user_email_key";
   static String passwordKey = "user_password_key";
 
-  // chat text field key
+  // search text field key
   static String searchSkills = "searching_skills_controller_key";
+
+  // description
+  static String dexcriptionKey = "description_controller_key";
 }
