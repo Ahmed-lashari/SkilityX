@@ -11,9 +11,18 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  
+  # botto sheet
+  modal_bottom_sheet: ^3.0.0
+
+  # on screen progress bar loading
+  loader_overlay: ^5.0.0
+  
+  # for loading screen ui
+  pull_to_refresh: ^2.0.0
 
   # googlle maps
-  google_maps_flutter: ^2.12.1
+  # google_maps_flutter: ^2.12.1 # requires ios 14 min
 
   # firebase setup
   firebase_core: ^3.13.0

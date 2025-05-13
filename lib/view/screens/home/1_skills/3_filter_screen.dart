@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/view/ui_config/view/screens/home/1_skills/3_filter_screen.dart';
-import 'package:skility_x/view/ui_config/view/screens/home/1_skills/skill_card.dart';
 import 'package:skility_x/view/widgets/custom_scaffold.dart';
 import 'package:skility_x/view/widgets/custom_widgets.dart';
+import 'package:skility_x/view/widgets/skills_banner.dart';
 
 class FilterScreen extends StatefulWidget {
   final String skillKey;

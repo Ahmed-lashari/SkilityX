@@ -24,6 +24,7 @@ class _CustomBottomNavBarState extends ConsumerState<CustomBottomNavBar> {
     return Align(
         alignment: Alignment.bottomCenter,
         child: Container(
+            margin: const EdgeInsets.only(bottom: 5),
             padding: const EdgeInsets.all(5),
             decoration: BoxDecoration(
               color: AppColors.secondary,

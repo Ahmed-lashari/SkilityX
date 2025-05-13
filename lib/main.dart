@@ -36,7 +36,7 @@ class _SkilityXState extends State<SkilityX> {
           debugShowCheckedModeBanner: false,
           themeMode: ThemeMode.dark,
           theme: ThemeManager.darkTheme,
-          initialRoute: RouteEnum.splash.path,
+          initialRoute: RouteEnum.homeScreen.path,
           routes: appRoutes,
         ),
       ),
