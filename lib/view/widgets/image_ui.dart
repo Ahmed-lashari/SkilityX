@@ -56,12 +56,10 @@ class ProfilePicture extends StatelessWidget {
 
 class CustomIcon extends ConsumerWidget {
   final String icon;
-  final double? height;
-  final double? width;
+  final double? iconSize;
   final Color? color;
 
-  const CustomIcon(
-      {super.key, required this.icon, this.height, this.width, this.color});
+  const CustomIcon({super.key, required this.icon, this.iconSize, this.color});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -69,19 +67,19 @@ class CustomIcon extends ConsumerWidget {
 
     return assetCheck.when(
       loading: () => SizedBox(
-        height: height ?? 15,
-        width: width ?? 15,
+        height: iconSize ?? 15,
+        width: iconSize ?? 15,
         child: GradientCircularProgress(),
       ),
       error: (_, __) => Icon(AppStaticIcons.warning,
-          size: height ?? 15, color: AppColors.error),
+          size: iconSize ?? 15, color: AppColors.error),
       data: (exists) {
         if (exists) {
           if (icon.endsWith(".png")) {
             return Image.asset(
               icon,
-              height: height ?? 15,
-              width: width ?? 15,
+              height: iconSize ?? 15,
+              width: iconSize ?? 15,
               color: color,
             );
           }
@@ -90,10 +88,11 @@ class CustomIcon extends ConsumerWidget {
           else {
             debugPrint("Picture from Others Image asset");
             return Image.asset(icon,
-                height: height ?? 15, width: width ?? 15, color: color);
+                height: iconSize ?? 15, width: iconSize ?? 15, color: color);
           }
         } else {
-          return Icon(AppStaticIcons.warning, size: height ?? 15, color: color);
+          return Icon(AppStaticIcons.warning,
+              size: iconSize ?? 15, color: color);
         }
       },
     );

@@ -36,10 +36,10 @@ class _YapDropdownState extends ConsumerState<myDropDwon> {
 
     return DropdownButtonFormField<String>(
       icon: CustomIcon(
-          icon: AppImageIcons.downarrow,
-          color: AppColors.secondary,
-          height: 25,
-          width: 25),
+        icon: AppImageIcons.downarrow,
+        color: AppColors.secondary,
+        iconSize: 25,
+      ),
       items: items
           .map((item) => DropdownMenuItem(
                 value: item.trim(),

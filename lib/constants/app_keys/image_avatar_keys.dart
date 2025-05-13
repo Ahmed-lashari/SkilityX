@@ -1,8 +1,8 @@
 class AvatarKeys {
   static const String pokieBoy =
       'https://www.emotescreator.com/wp/wp-content/uploads/2023/10/TwitchEmoteMaker.png';
-  static const String cryDaddy =
-      'https://png.pngtree.com/png-clipart/20220622/ourmid/pngtree-excited-emoticons-png-image_5237503.png';
+  static const String cryShaggy =
+      'https://preview.redd.it/do-you-also-like-me-get-absolutely-pissed-off-when-the-v0-funsjj0ev2kd1.png?auto=webp&s=44150f518374ee819473d1b95ed2efe4c96ccc74';
   static const String slayQueen = 'https://i.redd.it/suha96r54ns81.jpg';
   static const String blinkRizz =
       'https://images.icon-icons.com/2801/PNG/512/emoji_emote_emoticon_crazy_icon_178567.png';

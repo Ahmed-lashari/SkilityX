@@ -29,7 +29,7 @@ AppBar myAppBar({
               hintText: 'Search Skills...',
               controllerKey: TextControllerKeys.searchSkills);
         } else if (selectedIndex == 1) {
-          return Text('Collabration Requests');
+          return Text('Request Portal');
         } else {
           return Text('Muhammad Ahmed Lashari');
         }
