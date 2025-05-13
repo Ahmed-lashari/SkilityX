@@ -7,6 +7,7 @@ import 'package:skility_x/view/screens/auth/login/login.dart';
 import 'package:skility_x/view/screens/auth/signup/signup.dart';
 import 'package:skility_x/view/themes/theme_conts/typography.dart';
 import 'package:skility_x/view/widgets/custom_scaffold.dart';
+import 'package:skility_x/view/widgets/keep_alive_wrapper.dart';
 import 'package:skility_x/view/widgets/toggle_button.dart';
 
 class AuthScreen extends ConsumerStatefulWidget {
@@ -17,9 +18,9 @@ class AuthScreen extends ConsumerStatefulWidget {
 }
 
 class _AuthScreenState extends ConsumerState<AuthScreen> {
-  final instance1 = LoginUi();
+  final instance1 = KeepAliveWrapper(child: LoginUi());
 
-  final instance2 = SignUpUi();
+  final instance2 = KeepAliveWrapper(child: SignUpUi());
 
   final toggleButton = ToggleFilterButton();
   @override

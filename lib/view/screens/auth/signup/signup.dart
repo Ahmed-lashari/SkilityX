@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:skility_x/constants/app-icons.dart';
+import 'package:skility_x/constants/app_keys/drop_down_keys.dart';
 import 'package:skility_x/constants/app_keys/text_controller_keys.dart';
 import 'package:skility_x/core/utils.dart/validators.dart';
+import 'package:skility_x/view/widgets/app_drop_down.dart';
 import 'package:skility_x/view/widgets/app_textfield.dart';
 import 'package:skility_x/view/widgets/custom_widgets.dart';
 
@@ -28,6 +30,10 @@ class _SignUpUiState extends State<SignUpUi> {
                 prefixIcon: AppStaticIcons.person,
                 hintText: "Name",
                 controllerKey: TextControllerKeys.nameKey),
+            myDropDwon(
+                hintText: "Gender",
+                prefixIcon: AppStaticIcons.gender,
+                dropdwonKey: DropDownKeys.genders),
             myTextField(
                 prefixIcon: AppStaticIcons.email,
                 hintText: "Email",

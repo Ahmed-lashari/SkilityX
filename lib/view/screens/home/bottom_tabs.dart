@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skility_x/constants/app-icons.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
-import 'package:skility_x/view/screens/home/2_my_skills/my_skills.dart';
+import 'package:skility_x/view/screens/home/2_request_portal/my_skills.dart';
 import 'package:skility_x/view/screens/home/3_profile/user_profile.dart';
 import 'package:skility_x/view/screens/home/1_skills/1_skills_offered.dart';
 import 'package:skility_x/view/ui_config/view/widgets/bottom_nav_bar.dart';
