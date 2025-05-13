@@ -4,4 +4,5 @@ class EnvVariables {
   static final String githubClientId = dotenv.env['GITHUB_CLIENT_ID'] ?? "";
   static final String gitHubSecretKey =
       dotenv.env['GITHUB_CLIENT_SECRET'] ?? "";
+  static final String mapsApiKey = dotenv.env['GO_PRO_MAPS_KEY'] ?? "";
 }
