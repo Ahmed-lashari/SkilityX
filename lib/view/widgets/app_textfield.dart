@@ -16,6 +16,7 @@ class myTextField extends ConsumerWidget {
   final EdgeInsets? contentPadding;
   final String? Function(String?)? validator;
   final int maxLines;
+  final int? maxLength;
 
   const myTextField({
     super.key,
@@ -29,6 +30,7 @@ class myTextField extends ConsumerWidget {
     this.keyboardType = TextInputType.text,
     this.obscureText = false,
     this.maxLines = 1,
+    this.maxLength,
   });
 
   @override
@@ -38,6 +40,7 @@ class myTextField extends ConsumerWidget {
 
     return TextFormField(
       maxLines: maxLines,
+      maxLength: maxLength,
       cursorColor: AppColors.error,
       controller: controller,
       keyboardType: keyboardType,

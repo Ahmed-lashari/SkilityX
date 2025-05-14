@@ -56,7 +56,7 @@ class _CustomBottomNavBarState extends ConsumerState<CustomBottomNavBar> {
                                 return AnimatedContainer(
                                   duration: const Duration(milliseconds: 300),
                                   curve: Curves.easeInOut,
-                                  padding: const EdgeInsets.all(15),
+                                  padding: const EdgeInsets.all(12),
                                   decoration: BoxDecoration(
                                     color: isSelected
                                         ? Colors.yellow
@@ -68,7 +68,7 @@ class _CustomBottomNavBarState extends ConsumerState<CustomBottomNavBar> {
                                     children: [
                                       if (item.icon != null)
                                         Icon(item.icon,
-                                            size: 25,
+                                            size: 20,
                                             color: isSelected
                                                 ? Colors.blue
                                                 : Colors.black),
@@ -80,13 +80,13 @@ class _CustomBottomNavBarState extends ConsumerState<CustomBottomNavBar> {
                                                 (item.label != null)
                                             ? Padding(
                                                 padding: const EdgeInsets.only(
-                                                    left: 8.0),
+                                                    left: 3.0),
                                                 child: Text(
                                                   item.label ?? "",
                                                   style: TextStyle(
                                                     fontFamily: AppTypography
                                                         .scotishBold,
-                                                    fontSize: 15,
+                                                    fontSize: 13,
                                                     color: Colors.black,
                                                     fontWeight: FontWeight.w500,
                                                   ),

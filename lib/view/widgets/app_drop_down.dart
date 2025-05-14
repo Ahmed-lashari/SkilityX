@@ -5,6 +5,7 @@ import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/core/utils.dart/validators.dart';
 import 'package:skility_x/view-model/data_providers/view/widgets/drop_down_list.dart';
 import 'package:skility_x/view-model/data_providers/view/widgets/focus_nodes.dart';
+import 'package:skility_x/view/themes/theme_conts/typography.dart';
 import 'package:skility_x/view/widgets/image_ui.dart';
 
 class myDropDwon extends ConsumerStatefulWidget {
@@ -44,13 +45,18 @@ class _YapDropdownState extends ConsumerState<myDropDwon> {
           .map((item) => DropdownMenuItem(
                 value: item.trim(),
                 child: Text(item.trim(),
-                    style: TextStyle(color: AppColors.primary, fontSize: 16)),
+                    style: TextStyle(
+                        color: AppColors.onSecondary,
+                        fontSize: 16,
+                        fontFamily: AppTypography.scotishBold)),
               ))
           .toList(),
       decoration: InputDecoration(
         prefixIcon: Icon(widget.prefixIcon, size: 20),
         hintText: widget.hintText,
-        hintStyle: TextStyle(color: AppColors.secondary, fontSize: 10),
+        // hintStyle: TextStyle(
+        //     color: AppColors.error.withAlpha(100),
+        //     fontFamily: AppTypography.scotishRegular),
       ),
       focusNode: currFocus,
       dropdownColor: AppColors.unselectedItemIcon,

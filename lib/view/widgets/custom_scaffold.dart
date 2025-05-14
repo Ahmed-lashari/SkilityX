@@ -8,6 +8,7 @@ class CustomScaffold extends StatefulWidget {
   final PreferredSizeWidget? appBar;
   final Widget? drawer;
   final Widget? body;
+  final Widget? floatingActionButton;
   final Widget? bottomNavigationBar;
   final VoidCallback? onDrawerToggle;
   final GlobalKey<ScaffoldState>? externalScaffoldKey;
@@ -18,6 +19,7 @@ class CustomScaffold extends StatefulWidget {
     this.hPadding = 10,
     this.vPadding = 0,
     this.appBar,
+    this.floatingActionButton,
     this.drawer,
     this.onDrawerToggle,
     this.externalScaffoldKey,
@@ -53,6 +55,7 @@ class CustomScaffoldState extends State<CustomScaffold> {
               )
             : widget.body ?? const SizedBox.shrink(),
       ),
+      floatingActionButton: widget.floatingActionButton,
       bottomNavigationBar: widget.bottomNavigationBar,
     );
   }
