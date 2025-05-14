@@ -68,7 +68,7 @@ class DarkTheme {
       prefixIconColor: AppColors.secondary,
       prefixStyle: TextStyle(color: AppColors.secondary),
       hintStyle: TextStyle(
-          color: AppColors.onSecondary, fontFamily: AppTypography.interMedium),
+          color: AppColors.onSecondary, fontFamily: AppTypography.scotishBold),
       hintFadeDuration: const Duration(seconds: 1),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(14),
@@ -89,7 +89,7 @@ class DarkTheme {
       errorStyle: TextStyle(
           color: AppColors.error,
           fontSize: 12,
-          fontFamily: AppTypography.interMedium),
+          fontFamily: AppTypography.scotishBold),
       errorMaxLines: 2,
       filled: true,
       fillColor: AppColors.unselectedItemIcon,

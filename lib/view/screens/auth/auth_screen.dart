@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
-import 'package:skility_x/view-model/ui_providers/view/screen/auth/toggle_button.dart';
+import 'package:skility_x/view-model/action_controllers.dart/view/auth/toggle_button.dart';
 import 'package:skility_x/view/screens/auth/login/login.dart';
 import 'package:skility_x/view/screens/auth/signup/signup.dart';
 import 'package:skility_x/view/themes/theme_conts/typography.dart';
@@ -54,7 +54,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                     color: AppColors.onSecondary,
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
-                    fontFamily: AppTypography.interMedium,
+                    fontFamily: AppTypography.scotishBold,
                   ),
                 ),
               ],

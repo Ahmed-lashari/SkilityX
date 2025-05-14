@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
 import 'package:skility_x/view/screens/home/1_skills/3_filter_screen.dart';
@@ -24,7 +25,7 @@ class SkillCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: Utils.getWeidth(context),
-        height: Utils.getHeight(context) * 0.4,
+        // height: Utils.getHeight(context) * 0.4,
         margin: const EdgeInsets.only(bottom: 5),
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
@@ -36,77 +37,103 @@ class SkillCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                if (!showLearningButton)
-                  CustomWidgets.backNavigationIconButt(
-                      context: context, iconColor: navIconColor),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Hero(
-                        tag: "${HeroKeys.filterUserNameKey}_$index",
-                        child: Material(
-                          type: MaterialType.transparency,
-                          child: Text(
-                            'Fatima Noman',
-                            style: TextStyle(
-                                color: colorModel.textColor,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                      Text(
-                        'Artificial intelligence',
-                        style: TextStyle(
-                            color: colorModel.textColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                Hero(
-                  tag: "${HeroKeys.filterProfileKey}_$index",
-                  child: ProfilePicture(
-                    imageSize: 80,
-                    url: AvatarKeys.pokieBoy,
-                  ),
-                )
-              ],
-            ),
-            Text(
-              'I am an Artificial Inteligence Engineer and willing to help beginners or fresh developer into building Ai models. Feel free to reach me out using the provided deep links.',
-              maxLines: 4,
-              textAlign: TextAlign.justify,
+            // username and picture
+            _buildPrsonalDetails(context),
+
+            // course details
+            _buildDescription(),
+
+            // days + lessons + start LEarning button
+            _buildButtons(context),
+          ],
+        ));
+  }
+
+  Widget _buildPrsonalDetails(BuildContext context) {
+    return Row(
+      children: [
+        _buildNavButton(context),
+        _buildUserNameSkill(),
+        _buildPicture(),
+      ],
+    );
+  }
+
+  Widget _buildNavButton(BuildContext context) {
+    return (!showLearningButton)
+        ? CustomWidgets.backNavigationIconButt(
+            context: context, iconColor: navIconColor)
+        : SizedBox.shrink();
+  }
+
+  Widget _buildUserNameSkill() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Hero(
+          tag: "${HeroKeys.filterUserNameKey}_$index",
+          child: Material(
+            type: MaterialType.transparency,
+            child: Text(
+              'Fatima Noman',
               style: TextStyle(
                   color: colorModel.textColor,
-                  fontSize: 14,
-                  overflow: TextOverflow.ellipsis),
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold),
             ),
-            Flexible(
-              child: Container(
-                  width: Utils.getWeidth(context),
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: colorModel.textColor.withAlpha(150),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      // days and lessons text
-                      _buildDaysLessons(),
+          ),
+        ),
+        Text(
+          'Artificial intelligence',
+          style: TextStyle(
+              color: colorModel.textColor,
+              fontSize: 16,
+              fontWeight: FontWeight.bold),
+        ),
+      ],
+    );
+  }
 
-                      // start learingn button
-                      if (showLearningButton)
-                        CustomWidgets.anotherActionButton(
-                            context, index, colorModel),
-                    ],
-                  )),
-            )
+  Widget _buildPicture() {
+    return Hero(
+      tag: "${HeroKeys.filterProfileKey}_$index",
+      child: ProfilePicture(
+        imageSize: 80,
+        url: AvatarKeys.pokieBoy,
+      ),
+    );
+  }
+
+  Widget _buildDescription() {
+    return Text(
+      'I am an Artificial Inteligence Engineer and willing to help beginners or fresh developer into building Ai models. Feel free to reach me out using the provided deep links.',
+      maxLines: 4,
+      textAlign: TextAlign.justify,
+      style: TextStyle(
+          color: colorModel.textColor,
+          fontSize: 14,
+          overflow: TextOverflow.ellipsis),
+    );
+  }
+
+  Widget _buildButtons(BuildContext context) {
+    return Container(
+        width: Utils.getWeidth(context),
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          color: AppColors.background,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // lessons and duration
+            _buildDaysLessons(),
+
+            // start learingn button
+            if (showLearningButton)
+              CustomWidgets.anotherActionButton(context, index, colorModel),
           ],
         ));
   }
@@ -125,7 +152,7 @@ class SkillCard extends StatelessWidget {
               maxLines: 4,
               textAlign: TextAlign.justify,
               style: TextStyle(
-                  color: colorModel.boxColor,
+                  color: colorModel.textColor,
                   fontSize: 16,
                   overflow: TextOverflow.ellipsis,
                   fontWeight: FontWeight.bold),
@@ -135,7 +162,7 @@ class SkillCard extends StatelessWidget {
               maxLines: 4,
               textAlign: TextAlign.justify,
               style: TextStyle(
-                  color: colorModel.boxColor,
+                  color: colorModel.textColor,
                   fontSize: 14,
                   overflow: TextOverflow.ellipsis),
             ),
@@ -151,7 +178,7 @@ class SkillCard extends StatelessWidget {
               maxLines: 4,
               textAlign: TextAlign.justify,
               style: TextStyle(
-                  color: colorModel.boxColor,
+                  color: colorModel.textColor,
                   fontSize: 16,
                   overflow: TextOverflow.ellipsis,
                   fontWeight: FontWeight.bold),
@@ -161,7 +188,7 @@ class SkillCard extends StatelessWidget {
               maxLines: 4,
               textAlign: TextAlign.justify,
               style: TextStyle(
-                  color: colorModel.boxColor,
+                  color: colorModel.textColor,
                   fontSize: 14,
                   overflow: TextOverflow.ellipsis),
             ),

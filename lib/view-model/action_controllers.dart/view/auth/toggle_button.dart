@@ -17,8 +17,7 @@ class _FilterCategoryNotifier extends StateNotifier<bool> {
 }
 
 final filterPageController =
-    StateNotifierProvider.autoDispose<_FilterPageNotifier, PageController>(
-        (ref) {
+    StateNotifierProvider<_FilterPageNotifier, PageController>((ref) {
   return _FilterPageNotifier();
 });
 

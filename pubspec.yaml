@@ -112,15 +112,17 @@ flutter:
   #   - images/a_dot_ham.jpeg
 
   fonts:
-    - family: InterLight
+    - family: ScotishBold
       fonts:
-        - asset: assets/font/Inter_18pt-Light.ttf
-    - family: InterRegular
+        - asset: assets/Fonts/Satoshi-Bold.otf
+
+    - family: ScotishMedium
       fonts:
-        - asset: assets/font/Inter_18pt-Regular.ttf
-    - family: InterMedium
+        - asset: assets/Fonts/Satoshi-Medium.otf
+
+    - family: ScotishRegular
       fonts:
-        - asset: assets/font/Inter_28pt-Medium.ttf
+        - asset: assets/Fonts/Satoshi-Regular.otf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

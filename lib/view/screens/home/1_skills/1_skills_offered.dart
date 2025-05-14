@@ -131,21 +131,24 @@ class _SkillsScreenState extends State<SkillsScreen> {
   }
 
   Widget _buildExpertUi(OurExperts expert) {
-    return Column(
-      children: [
-        // display image
-        ClipOval(
-            child: Container(
-          padding: EdgeInsets.all(3),
-          color: AppColors.error,
-          child: ProfilePicture(
-            url: expert.imageurl,
-            imageSize: 65,
-          ),
-        )),
-        // user anme and skill
-        _builtNameAndSkill(expert)
-      ],
+    return Container(
+      // color: AppColors.secondary,
+      child: Column(
+        children: [
+          // display image
+          ClipOval(
+              child: Container(
+            padding: EdgeInsets.all(3),
+            color: AppColors.error,
+            child: ProfilePicture(
+              url: expert.imageurl,
+              imageSize: 60,
+            ),
+          )),
+          // user anme and skill
+          _builtNameAndSkill(expert)
+        ],
+      ),
     );
   }
 
