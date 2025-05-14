@@ -6,6 +6,7 @@ import 'package:skility_x/view/screens/home/2_request_portal/request_tabs.dart';
 import 'package:skility_x/view/screens/home/3_profile/1_user_profile.dart';
 import 'package:skility_x/view/screens/home/1_skills/1_skills_offered.dart';
 import 'package:skility_x/view/ui_config/view/widgets/bottom_nav_bar.dart';
+import 'package:skility_x/view/widgets/app_drawer.dart';
 import 'package:skility_x/view/widgets/bottom_nav_bar.dart';
 import 'package:skility_x/view/widgets/app_bar.dart';
 import 'package:skility_x/view/widgets/custom_scaffold.dart';
@@ -34,10 +35,9 @@ class _HomeTabsState extends ConsumerState<HomeTabs> {
 
     return CustomScaffold(
       key: persistentkey,
-      drawer: Drawer(),
+      drawer: myDrawer(persistentkey: persistentkey),
       appBar: myAppBar(
         context: context,
-        persistentkey: persistentkey,
         actions: [
           IconButton(
               onPressed: () => Utils.openDrawer(persistentkey),
