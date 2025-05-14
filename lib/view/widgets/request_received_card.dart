@@ -184,23 +184,27 @@ class RequestReceivedCard extends StatelessWidget {
           color: colorModel.textColor.withAlpha(50),
           borderRadius: BorderRadius.circular(10)),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Row(
-            spacing: 10,
-            children: [
-              ProfilePicture(
-                imageSize: 40,
-                url: AvatarKeys.blinkRizz,
-              ),
-              Text(
-                'Fatima Noman',
-                style: TextStyle(
-                    color: colorModel.textColor,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
-              ),
-            ],
+          Expanded(
+            child: Row(
+              spacing: 10,
+              children: [
+                ProfilePicture(
+                  imageSize: 40,
+                  url: AvatarKeys.blinkRizz,
+                ),
+                Flexible(
+                  child: Text(
+                    'Fatima Noman',
+                    style: TextStyle(
+                        color: colorModel.textColor,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
           ),
           IconButton(
               onPressed: () => CustomWidgets.customBottomSheet(

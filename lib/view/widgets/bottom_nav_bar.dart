@@ -85,7 +85,7 @@ class _CustomBottomNavBarState extends ConsumerState<CustomBottomNavBar> {
                                                   item.label ?? "",
                                                   style: TextStyle(
                                                     fontFamily: AppTypography
-                                                        .interMedium,
+                                                        .scotishBold,
                                                     fontSize: 15,
                                                     color: Colors.black,
                                                     fontWeight: FontWeight.w500,

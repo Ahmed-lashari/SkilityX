@@ -69,7 +69,10 @@ class CustomIcon extends ConsumerWidget {
       loading: () => SizedBox(
         height: iconSize ?? 15,
         width: iconSize ?? 15,
-        child: GradientCircularProgress(),
+        child: Padding(
+          padding: const EdgeInsets.all(3),
+          child: GradientCircularProgress(),
+        ),
       ),
       error: (_, __) => Icon(AppStaticIcons.warning,
           size: iconSize ?? 15, color: AppColors.error),

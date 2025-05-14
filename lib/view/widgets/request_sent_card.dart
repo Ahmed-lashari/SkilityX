@@ -193,12 +193,14 @@ class RequestSentCard extends StatelessWidget {
                   imageSize: 50,
                   url: AvatarKeys.cryShaggy,
                 ),
-                Text(
-                  'Fatima Noman',
-                  style: TextStyle(
-                      color: colorModel.textColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
+                Expanded(
+                  child: Text(
+                    'Fatima Noman',
+                    style: TextStyle(
+                        color: colorModel.textColor,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
               ],
             ),

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:skility_x/constants/app_colors.dart';
+import 'package:skility_x/constants/app_keys/image_avatar_keys.dart';
+import 'package:skility_x/core/utils.dart/utils.dart';
 import 'package:skility_x/view/widgets/custom_scaffold.dart';
+import 'package:skility_x/view/widgets/image_ui.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -12,14 +16,116 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     debugPrint('building profile screen');
-    debugPrint('building skills offers screen');
     return CustomScaffold(
       hPadding: 0,
       isScrollable: true,
-      body: Center(
-          child: Column(
-        children: [],
-      )),
+      body: Column(
+        children: [
+          // imiage and user section using sstack
+          _buildImageAndUserSection(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildImageAndUserSection() {
+    return Container(
+      height: Utils.getHeight(context) * 0.38,
+      // padding: EdgeInsets.only(bottom: 10),
+      color: AppColors.error,
+      child: Stack(
+        children: [
+          _buildCoverPhoto(),
+          _buildUserSection(),
+        ],
+      ),
+    );
+  }
+
+  // cover photo
+  Widget _buildCoverPhoto() {
+    return Container(
+      padding: EdgeInsets.all(10),
+      width: Utils.getWeidth(context),
+      height: Utils.getHeight(context) * 0.2,
+      decoration: BoxDecoration(
+          color: AppColors.selectedItemIcon,
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(16))),
+    );
+  }
+
+  Widget _buildUserSection() {
+    return Positioned(
+      top: Utils.getHeight(context) * 0.169,
+      left: 0,
+      right: 0,
+      child: Container(
+        padding: EdgeInsets.all(5),
+        margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+        width: Utils.getWeidth(context),
+        height: Utils.getHeight(context) * 0.2,
+        decoration: BoxDecoration(
+            color: AppColors.onBackground,
+            borderRadius: BorderRadius.circular(16)),
+        child: Row(
+          spacing: 3,
+          children: [
+            // details
+            _buildTextualDetails(),
+
+            // photo
+            _buildUserProfilepic(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTextualDetails() {
+    return Expanded(
+      flex: 6,
+      child: Container(
+        height: Utils.getHeight(context),
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Muhammad\nA Lashari",
+              style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.unselectedItemIcon),
+            ),
+            Text(
+              "Programmer",
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.unselectedItemIcon),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildUserProfilepic() {
+    return Expanded(
+      flex: 4,
+      child: Container(
+        height: Utils.getHeight(context),
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+            color: AppColors.transparent,
+            borderRadius: BorderRadius.circular(10)),
+        child: ProfilePicture(
+          url: AvatarKeys.pokieBoy,
+          // imageSize: 100,
+        ),
+      ),
     );
   }
 }

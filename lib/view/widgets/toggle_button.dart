@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
-import 'package:skility_x/view-model/ui_providers/view/screen/auth/toggle_button.dart';
+import 'package:skility_x/view-model/action_controllers.dart/view/auth/toggle_button.dart';
 import 'package:skility_x/view/themes/theme_conts/typography.dart';
 
 class ToggleFilterButton extends ConsumerWidget {
@@ -73,7 +73,7 @@ class _TextBuilder extends StatelessWidget {
         style: TextStyle(
             fontSize: 14,
             color: AppColors.onBackground,
-            fontFamily: AppTypography.interMedium),
+            fontFamily: AppTypography.scotishBold),
         child: Text(isPopular ? "Login" : "Register"));
   }
 }

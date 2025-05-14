@@ -63,7 +63,7 @@ class CustomWidgets {
           Text(text,
               style: TextStyle(
                   color: AppColors.unselectedItemIcon,
-                  fontFamily: AppTypography.interMedium,
+                  fontFamily: AppTypography.scotishBold,
                   fontSize: 14)),
         Expanded(
             child: Divider(
@@ -171,7 +171,6 @@ class CustomWidgets {
         borderRadius: BorderRadius.circular(16),
         splashColor: colorModel.textColor,
         child: Ink(
-            height: Utils.getHeight(context),
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
@@ -184,5 +183,10 @@ class CustomWidgets {
             ))),
       ),
     );
+  }
+
+  static Widget AppBarWelcom() {
+    final text = Utils.getWelcomeText();
+    return Text('$text Muhammad');
   }
 }
