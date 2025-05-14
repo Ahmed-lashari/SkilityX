@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/constants/app_keys/image_avatar_keys.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
+import 'package:skility_x/view/themes/theme_conts/typography.dart';
 import 'package:skility_x/view/widgets/custom_scaffold.dart';
 import 'package:skility_x/view/widgets/image_ui.dart';
 
@@ -17,6 +18,7 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     debugPrint('building profile screen');
     return CustomScaffold(
+      backGroundColor: AppColors.unselectedItemIcon,
       hPadding: 0,
       isScrollable: true,
       body: Column(
@@ -30,9 +32,8 @@ class _ProfileState extends State<Profile> {
 
   Widget _buildImageAndUserSection() {
     return Container(
-      height: Utils.getHeight(context) * 0.38,
-      // padding: EdgeInsets.only(bottom: 10),
-      color: AppColors.error,
+      height: Utils.getHeight(context) * 0.4,
+      // color: AppColors.error,
       child: Stack(
         children: [
           _buildCoverPhoto(),
@@ -45,12 +46,17 @@ class _ProfileState extends State<Profile> {
   // cover photo
   Widget _buildCoverPhoto() {
     return Container(
-      padding: EdgeInsets.all(10),
       width: Utils.getWeidth(context),
-      height: Utils.getHeight(context) * 0.2,
+      height: Utils.getHeight(context) * 0.25,
       decoration: BoxDecoration(
-          color: AppColors.selectedItemIcon,
-          borderRadius: BorderRadius.vertical(bottom: Radius.circular(16))),
+        color: AppColors.selectedItemIcon,
+        borderRadius: BorderRadius.vertical(bottom: Radius.circular(50)),
+      ),
+      child: ProfilePicture(
+        isCover: true,
+        url:
+            "https://plus.unsplash.com/premium_photo-1673177667569-e3321a8d8256?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y292ZXIlMjBwaG90b3xlbnwwfHwwfHx8MA%3D%3D",
+      ),
     );
   }
 
@@ -61,7 +67,7 @@ class _ProfileState extends State<Profile> {
       right: 0,
       child: Container(
         padding: EdgeInsets.all(5),
-        margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+        margin: EdgeInsets.symmetric(horizontal: 15),
         width: Utils.getWeidth(context),
         height: Utils.getHeight(context) * 0.2,
         decoration: BoxDecoration(
@@ -93,16 +99,18 @@ class _ProfileState extends State<Profile> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Muhammad\nA Lashari",
+              "MUHAMMAD A LASHARI",
+              maxLines: 2,
               style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
+                  fontFamily: AppTypography.scotishBold,
+                  fontSize: 18,
+                  overflow: TextOverflow.ellipsis,
                   color: AppColors.unselectedItemIcon),
             ),
             Text(
-              "Programmer",
+              "PROGRAMMER",
               style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 15,
                   fontWeight: FontWeight.bold,
                   color: AppColors.unselectedItemIcon),
             ),

@@ -33,7 +33,7 @@ class AppTypography {
   );
 
   static TextStyle _buildBoldText() {
-    return TextStyle(fontFamily: _scotishBold);
+    return TextStyle(fontFamily: _scotishBold, fontWeight: FontWeight.bold);
   }
 
   static TextStyle _buildMediumText() {

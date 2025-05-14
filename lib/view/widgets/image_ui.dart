@@ -11,22 +11,27 @@ class ProfilePicture extends StatelessWidget {
   final String url;
   final File? imageFile;
   final double imageSize;
-  final bool isMan;
+  final bool isCover;
 
   const ProfilePicture(
       {super.key,
       this.url = '',
       this.imageFile,
-      this.imageSize = 50,
-      this.isMan = true});
+      this.isCover = false,
+      this.imageSize = 50});
 
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
         decoration: BoxDecoration(
             color: Colors.transparent, borderRadius: BorderRadius.circular(16)),
-        child: ClipRRect(
-            borderRadius: BorderRadius.circular(50), child: _buildImage()));
+        child: isCover
+            ? ClipRRect(
+                borderRadius:
+                    BorderRadius.vertical(bottom: Radius.circular(50)),
+                child: _buildImage())
+            : ClipRRect(
+                borderRadius: BorderRadius.circular(50), child: _buildImage()));
   }
 
   Widget _buildImage() {
