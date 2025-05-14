@@ -6,7 +6,7 @@ import 'package:skility_x/view/screens/home/1_skills/3_filter_screen.dart';
 import 'package:skility_x/view/widgets/image_ui.dart';
 
 import 'package:skility_x/constants/app_keys/hero_keys.dart';
-import 'package:skility_x/constants/app_keys/image_avatar_keys.dart';
+import 'package:skility_x/constants/app_keys/image_keys.dart';
 import 'package:skility_x/view/ui_config/view/screens/home/1_skills/3_filter_screen.dart';
 import 'package:skility_x/view/widgets/custom_widgets.dart';
 

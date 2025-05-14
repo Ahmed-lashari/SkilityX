@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/constants/app_keys/hero_keys.dart';
-import 'package:skility_x/constants/app_keys/image_avatar_keys.dart';
+import 'package:skility_x/constants/app_keys/image_keys.dart';
 import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
 import 'package:skility_x/view/screens/home/1_skills/5_request_form.dart';

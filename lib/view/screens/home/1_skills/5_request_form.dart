@@ -63,7 +63,7 @@ class Skill_RequestFormState extends State<SkillRequestForm> {
           myTextField(
               maxLines: 5,
               hintText: 'Short Description',
-              controllerKey: TextControllerKeys.dexcriptionKey),
+              controllerKey: TextControllerKeys.description),
         ],
       ),
     );

@@ -33,6 +33,42 @@ final dropdownItemsProvider =
       ];
       skills.sort();
       return skills;
+
+    case DropDownKeys.lessonsKey:
+      return [
+        "1 - 5",
+        "5 - 10",
+        "10 - 15",
+        "15 - 20",
+        "20 - 25",
+        "25 - 30",
+        "30 - 35",
+        "35 - 40",
+        "45 >",
+      ];
+    case DropDownKeys.daysKey:
+      return [
+        "1 - 5",
+        "5 - 10",
+        "10 - 15",
+        "15 - 20",
+        "20 - 25",
+        "25 - 30",
+        "30 - 35",
+        "35 - 40",
+        "45 >",
+      ];
+    case DropDownKeys.amountKey:
+      return [
+        "500 - 1k",
+        "1k - 5k",
+        "5k - 10k",
+        "10k - 20k",
+        "20k - 35k",
+        "35k - 50k",
+        "50k >",
+      ];
+
     default:
       return [];
   }

@@ -11,6 +11,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  # dio: ^5.8.0+1
+  # http: ^1.4.0
+  # googleapis_auth: ^2.0.0
   
   # botto sheet
   modal_bottom_sheet: ^3.0.0
@@ -109,6 +113,9 @@ flutter:
 
     # arrows
     - assets/arrows/
+
+    # other icons
+    - assets/
   #   - images/a_dot_ham.jpeg
 
   fonts:

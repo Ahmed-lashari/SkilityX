@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:skility_x/constants/app-icons.dart';
 import 'package:skility_x/constants/app_colors.dart';
-import 'package:skility_x/constants/app_keys/image_avatar_keys.dart';
+import 'package:skility_x/constants/app_keys/hero_keys.dart';
+import 'package:skility_x/constants/app_keys/image_keys.dart';
+import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
+import 'package:skility_x/view/screens/home/3_profile/2_adv_course_screen.dart';
 import 'package:skility_x/view/themes/theme_conts/typography.dart';
+import 'package:skility_x/view/widgets/bottom_sheets/change_cover_photo.dart';
 import 'package:skility_x/view/widgets/custom_scaffold.dart';
+import 'package:skility_x/view/widgets/custom_widgets.dart';
 import 'package:skility_x/view/widgets/image_ui.dart';
 
 class Profile extends StatefulWidget {
@@ -25,7 +31,21 @@ class _ProfileState extends State<Profile> {
         children: [
           // imiage and user section using sstack
           _buildImageAndUserSection(),
+
+          // description
+          _buildDesription(),
+
+          // other details as needed
+          _buildOtherDetails(),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: AppColors.error,
+        foregroundColor: AppColors.onBackground,
+        heroTag: HeroKeys.fabActionHeroTag,
+        onPressed: () =>
+            AppNavigator.navigateTo(context, wRoute: AdvertiseCourseScreen()),
+        child: CustomIcon(icon: AppImageIcons.appLogo, iconSize: 30),
       ),
     );
   }
@@ -35,10 +55,7 @@ class _ProfileState extends State<Profile> {
       height: Utils.getHeight(context) * 0.4,
       // color: AppColors.error,
       child: Stack(
-        children: [
-          _buildCoverPhoto(),
-          _buildUserSection(),
-        ],
+        children: [_buildCoverPhoto(), _buildUserSection()],
       ),
     );
   }
@@ -52,11 +69,28 @@ class _ProfileState extends State<Profile> {
         color: AppColors.selectedItemIcon,
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(50)),
       ),
-      child: ProfilePicture(
-        isCover: true,
-        url:
-            "https://plus.unsplash.com/premium_photo-1673177667569-e3321a8d8256?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y292ZXIlMjBwaG90b3xlbnwwfHwwfHx8MA%3D%3D",
-      ),
+      child: Stack(children: [
+        Positioned.fill(
+          child: ProfilePicture(
+            isCover: true,
+            url:
+                "https://plus.unsplash.com/premium_photo-1673177667569-e3321a8d8256?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y292ZXIlMjBwaG90b3xlbnwwfHwwfHx8MA%3D%3D",
+          ),
+        ),
+        Positioned(
+          right: 10,
+          top: 10,
+          child: GestureDetector(
+            onTap: () => CustomWidgets.customBottomSheet(
+                context, BottomSheetCoverPhoto(), AppColors.transparent),
+            child: CustomIcon(
+              icon: AppImageIcons.camera,
+              iconSize: 20,
+              color: AppColors.primary,
+            ),
+          ),
+        )
+      ]),
     );
   }
 
@@ -134,6 +168,36 @@ class _ProfileState extends State<Profile> {
           // imageSize: 100,
         ),
       ),
+    );
+  }
+
+  Widget _buildDesription() {
+    return Container(
+      width: Utils.getWeidth(context),
+      padding: EdgeInsets.all(10),
+      margin: EdgeInsets.all(5),
+      decoration: BoxDecoration(
+          color: AppColors.error, borderRadius: BorderRadius.circular(10)),
+      child: Text(
+          'BIO:\nMy name is Muhammad Ahmed LAshari and i am a Flutter Developer with 2+ years of experience.',
+          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+    );
+  }
+
+  Widget _buildOtherDetails() {
+    return Container(
+      width: Utils.getWeidth(context),
+      padding: EdgeInsets.all(10),
+      margin: EdgeInsets.all(5),
+      decoration: BoxDecoration(
+          color: AppColors.onBackground,
+          borderRadius: BorderRadius.circular(10)),
+      child: Text('Add other Details as needed.',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: AppColors.error)),
     );
   }
 }

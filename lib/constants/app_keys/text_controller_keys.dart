@@ -7,6 +7,8 @@ class TextControllerKeys {
   // search text field key
   static String searchSkills = "searching_skills_controller_key";
 
-  // description
-  static String dexcriptionKey = "description_controller_key";
+  // Form Related Keys
+
+  static String title = "title_controller_key";
+  static String description = "description_controller_key";
 }

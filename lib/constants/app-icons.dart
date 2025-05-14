@@ -35,6 +35,14 @@ class AppStaticIcons {
   static final IconData rocket = FontAwesomeIcons.rocketchat;
   static final IconData search = FontAwesomeIcons.search;
   static final IconData descriptionAbout = FontAwesomeIcons.fileLines;
+  static final IconData fabIcon = FontAwesomeIcons.dAndD;
+
+  // course uploading icons
+  static final IconData title = FontAwesomeIcons.font;
+  static final IconData descrition = FontAwesomeIcons.commentDots;
+  static final IconData lessons = FontAwesomeIcons.bookOpen;
+  static final IconData duration = FontAwesomeIcons.calendarDay;
+  static final IconData amount = FontAwesomeIcons.coins;
 }
 
 class AppImageIcons {
@@ -83,4 +91,10 @@ class AppImageIcons {
   static const String rightarrow = "assets/arrows/right-arrow.png";
   static const String leftarrow = "assets/arrows/left-arrow.png";
   static const String uparrow = "assets/arrows/up-arrow.png";
+
+  // other icons
+  static const String camera = "assets/camera.png";
+
+  // APP LOGO
+  static const String appLogo = "assets/skility_x_icon/skility_x.png";
 }
