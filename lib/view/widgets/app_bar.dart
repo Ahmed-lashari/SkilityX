@@ -5,11 +5,9 @@ import 'package:skility_x/constants/app_keys/text_controller_keys.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
 import 'package:skility_x/view/widgets/app_textfield.dart';
 import 'package:skility_x/view/widgets/bottom_nav_bar.dart';
-import 'package:skility_x/view/widgets/custom_scaffold.dart';
 import 'package:skility_x/view/widgets/custom_widgets.dart';
 
 AppBar myAppBar({
-  required final GlobalKey<CustomScaffoldState> persistentkey,
   List<Widget>? actions,
   required BuildContext context,
 }) {
