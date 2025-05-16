@@ -11,6 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  
+  # firebse crash catch
+  firebase_crashlytics: ^4.3.5
 
   # dio: ^5.8.0+1
   # http: ^1.4.0
