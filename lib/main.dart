@@ -13,7 +13,7 @@ void main() async {
 
   await InitDependencies.initFirebase();
 
-  InitDependencies.initOnError();
+  InitDependencies.initCrashlatics();
 
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) => runApp(ProviderScope(child: const SkilityX())));
