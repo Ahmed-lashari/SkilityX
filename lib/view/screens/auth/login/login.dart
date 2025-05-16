@@ -25,12 +25,6 @@ class _LoginUiState extends State<LoginUi> {
         child: Column(
           spacing: 16,
           children: [
-            TextButton(
-                onPressed: () {
-                  debugPrint('button clicked');
-                  throw Exception();
-                },
-                child: Text('throw exceptino')),
             myTextField(
                 prefixIcon: AppStaticIcons.person,
                 hintText: "Email",
