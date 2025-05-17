@@ -10,6 +10,7 @@ class AuthLoginPassRepo {
       await AuthLoginPassService.registerUser(email.trim(), password.trim());
       return true;
     } on FirebaseAuthException catch (e, s) {
+      /* 
       switch (e.code) {
         case 'email-already-in-use':
           Utils.handleError('Email is already in use.', s);
@@ -41,12 +42,13 @@ class AuthLoginPassRepo {
               title: "Internal Error! Please try again later.",
               type: ToastificationType.warning);
       }
+    */
       return false;
     } catch (e, s) {
-      Utils.handleError('Unexpected error: $e', s);
-      Utils.toastMsg(
-          title: "Server side error. Please try again later.",
-          type: ToastificationType.warning);
+      // Utils.handleError('Unexpected error: $e', s);
+      // Utils.toastMsg(
+      //     title: "Server side error. Please try again later.",
+      //     type: ToastificationType.warning);
       return false;
     }
   }
