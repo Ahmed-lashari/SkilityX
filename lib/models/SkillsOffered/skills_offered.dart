@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'generated/skills_offered.g.dart';
+part 'skills_offered.g.dart';
 
 @HiveType(typeId: 1)
 @JsonSerializable()

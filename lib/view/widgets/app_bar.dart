@@ -9,30 +9,37 @@ import 'package:skility_x/view/widgets/custom_widgets.dart';
 
 AppBar myAppBar({
   List<Widget>? actions,
+  Widget? title,
+  bool showLeading = false,
   required BuildContext context,
 }) {
   return AppBar(
     automaticallyImplyLeading: false,
     actions: actions,
-    toolbarHeight: Utils.getHeight(context) * 0.1,
+    toolbarHeight: !showLeading ? Utils.getHeight(context) * 0.1 : null,
     centerTitle: false,
-    title: Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Consumer(builder: (context, ref, _) {
-        final selectedIndex = ref.watch(selectedIndexProvider);
+    leading: showLeading
+        ? CustomWidgets.backNavigationIconButt(context: context)
+        : null,
+    title: title ??
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: Consumer(builder: (context, ref, _) {
+            final selectedIndex = ref.watch(selectedIndexProvider);
 
-        if (selectedIndex == 0) {
-          return myTextField(
-              prefixIcon: AppStaticIcons.search,
-              contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-              hintText: 'Search Skills...',
-              controllerKey: TextControllerKeys.searchSkills);
-        } else if (selectedIndex == 1) {
-          return Text('Request Portal');
-        } else {
-          return CustomWidgets.AppBarWelcom();
-        }
-      }),
-    ),
+            if (selectedIndex == 0) {
+              return myTextField(
+                  prefixIcon: AppStaticIcons.search,
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                  hintText: 'Search Skills...',
+                  controllerKey: TextControllerKeys.searchSkills);
+            } else if (selectedIndex == 1) {
+              return Text('Request Portal');
+            } else {
+              return CustomWidgets.AppBarWelcom();
+            }
+          }),
+        ),
   );
 }

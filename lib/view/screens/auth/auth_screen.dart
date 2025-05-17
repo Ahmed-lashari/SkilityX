@@ -42,17 +42,18 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox.shrink(),
             Row(
               spacing: 20,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset('assets/skility_x_icon/skility_x.png', scale: 20),
+                Image.asset('assets/skility_x_icon/skility_x.png', scale: 15),
                 Text(
                   "SkilityX",
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     color: AppColors.onSecondary,
-                    fontSize: 25,
+                    fontSize: 30,
                     fontWeight: FontWeight.bold,
                     fontFamily: AppTypography.scotishBold,
                   ),

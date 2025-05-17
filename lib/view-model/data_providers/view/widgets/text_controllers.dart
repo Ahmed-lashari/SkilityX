@@ -15,7 +15,7 @@ final textControllersProvider =
 
 final controllerTextProvider =
     Provider.autoDispose.family<String, String>((ref, key) {
-  final text = ref.read(textControllersProvider(key)).text;
+  final text = ref.read(textControllersProvider(key)).text.trim();
 
   return text;
 });

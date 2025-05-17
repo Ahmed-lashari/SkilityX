@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skility_x/constants/app-icons.dart';
 import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/constants/app_keys/text_controller_keys.dart';
-import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/core/utils.dart/validators.dart';
+import 'package:skility_x/view-model/action_controllers.dart/view/auth/login_action.dart';
 import 'package:skility_x/view/widgets/app_textfield.dart';
 import 'package:skility_x/view/widgets/custom_widgets.dart';
 
-class LoginUi extends StatefulWidget {
+class LoginUi extends ConsumerStatefulWidget {
   const LoginUi({super.key});
 
   @override
-  State<LoginUi> createState() => _LoginUiState();
+  ConsumerState<LoginUi> createState() => _LoginUiState();
 }
 
-class _LoginUiState extends State<LoginUi> {
+class _LoginUiState extends ConsumerState<LoginUi> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -33,8 +34,7 @@ class _LoginUiState extends State<LoginUi> {
             _buildPasswordFiels(),
             CustomWidgets.actionButton(
                 label: 'Login',
-                onPressed: () => AppNavigator.navigateTo(context,
-                    sRoute: RouteEnum.homeScreen.path)),
+                onPressed: () => LoginAction.loginUser(context, ref, formKey)),
             //  Validators.validateForm(formKey)
             CustomWidgets.myDivider(text: "Or login with"),
             CustomWidgets.OAuthOptions(),

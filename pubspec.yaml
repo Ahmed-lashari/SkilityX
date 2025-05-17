@@ -12,8 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
   
-  # firebse crash catch
-  firebase_crashlytics: ^4.3.5
+
+ 
+  
 
   # dio: ^5.8.0+1
   # http: ^1.4.0
@@ -31,11 +32,7 @@ dependencies:
   # googlle maps
   # google_maps_flutter: ^2.12.1 # requires ios 14 min
 
-  # firebase setup
-  firebase_core: ^3.13.0
-
-  # firebase auth
-  firebase_auth: ^5.5.3
+  
 
   # customized toasts
   toastification: ^3.0.2
@@ -70,6 +67,15 @@ dependencies:
 
   # extra layer for the variables security
   flutter_dotenv: ^5.2.1
+
+
+
+   # ======================================== FIREBASE ==========================================
+  firebase_core: ^3.13.0          # firebase setup
+  firebase_crashlytics: ^4.3.5    # crash catch
+  cloud_firestore: ^5.6.7         # firestore
+  firebase_auth: ^5.5.3           # authentication
+
 
 dev_dependencies:
   flutter_test:

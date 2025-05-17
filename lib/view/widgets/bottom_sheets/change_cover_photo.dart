@@ -26,14 +26,16 @@ class BottomSheetCoverPhoto extends StatelessWidget {
   }
 }
 
-class ChangeCoverPhoto extends StatelessWidget {
+class ChangeImage extends StatelessWidget {
   final String imageUrl;
   final String title;
+  final VoidCallback onTap;
 
-  const ChangeCoverPhoto({
+  const ChangeImage({
     super.key,
     required this.imageUrl,
     required this.title,
+    required this.onTap,
   });
 
   @override
@@ -71,8 +73,8 @@ class ChangeCoverPhoto extends StatelessWidget {
           // Icon Button
           CustomWidgets.actionButton(
               backgroundColor: AppColors.unselectedItemIcon,
-              label: "Select This Cover",
-              onPressed: () {}),
+              label: "Select This Image",
+              onPressed: onTap),
         ],
       ),
     );
