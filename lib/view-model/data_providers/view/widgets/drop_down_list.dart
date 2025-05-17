@@ -85,7 +85,7 @@ class _FormValuesNotifier extends StateNotifier<Map<String, String?>> {
     };
   }
 
-  String? getValue(String key) => state[key];
+  String getValue(String key) => (state[key] ?? '').trim();
 }
 
 final formValuesProvider =

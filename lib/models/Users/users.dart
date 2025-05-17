@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'generated/users.g.dart';
+part 'users.g.dart';
 
 @HiveType(typeId: 0)
 @JsonSerializable()
@@ -30,6 +30,8 @@ class Users {
   final String coverPhotoUrl;
   @HiveField(11)
   final bool activeStatus;
+  @HiveField(12)
+  final String gender;
 
   const Users({
     required this.id,
@@ -44,9 +46,10 @@ class Users {
     required this.profilePicUrl,
     required this.coverPhotoUrl,
     required this.activeStatus,
+    required this.gender,
   });
 
-  Users copyWith(
+  Users copyWith({
     final String? id,
     final String? name,
     final String? email,
@@ -59,7 +62,8 @@ class Users {
     final String? profilePicUrl,
     final String? coverPhotoUrl,
     final bool? activeStatus,
-  ) {
+    final String? gender,
+  }) {
     return Users(
       id: id ?? this.id,
       name: name ?? this.name,
@@ -73,6 +77,7 @@ class Users {
       profilePicUrl: profilePicUrl ?? this.profilePicUrl,
       coverPhotoUrl: coverPhotoUrl ?? this.coverPhotoUrl,
       activeStatus: activeStatus ?? this.activeStatus,
+      gender: gender ?? this.gender,
     );
   }
 

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of '../skills_offered.dart';
+part of 'skills_offered.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator

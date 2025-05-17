@@ -85,8 +85,11 @@ class _CoverPhotoCategoryCard extends StatelessWidget {
                 return GestureDetector(
                   onTap: () => CustomWidgets.customBottomSheet(
                       context,
-                      ChangeCoverPhoto(
-                          imageUrl: imageUrls[index], title: title),
+                      ChangeImage(
+                        imageUrl: imageUrls[index],
+                        title: title,
+                        onTap: () {},
+                      ),
                       AppColors.transparent),
                   child: Ink(
                     child: ClipRRect(

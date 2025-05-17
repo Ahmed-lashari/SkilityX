@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of '../users.dart';
+part of 'users.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
@@ -29,13 +29,14 @@ class UsersAdapter extends TypeAdapter<Users> {
       profilePicUrl: fields[9] as String,
       coverPhotoUrl: fields[10] as String,
       activeStatus: fields[11] as bool,
+      gender: fields[12] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, Users obj) {
     writer
-      ..writeByte(12)
+      ..writeByte(13)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -59,7 +60,9 @@ class UsersAdapter extends TypeAdapter<Users> {
       ..writeByte(10)
       ..write(obj.coverPhotoUrl)
       ..writeByte(11)
-      ..write(obj.activeStatus);
+      ..write(obj.activeStatus)
+      ..writeByte(12)
+      ..write(obj.gender);
   }
 
   @override
@@ -94,6 +97,7 @@ Users _$UsersFromJson(Map<String, dynamic> json) => Users(
       profilePicUrl: json['profilePicUrl'] as String,
       coverPhotoUrl: json['coverPhotoUrl'] as String,
       activeStatus: json['activeStatus'] as bool,
+      gender: json['gender'] as String,
     );
 
 Map<String, dynamic> _$UsersToJson(Users instance) => <String, dynamic>{
@@ -109,4 +113,5 @@ Map<String, dynamic> _$UsersToJson(Users instance) => <String, dynamic>{
       'profilePicUrl': instance.profilePicUrl,
       'coverPhotoUrl': instance.coverPhotoUrl,
       'activeStatus': instance.activeStatus,
+      'gender': instance.gender,
     };

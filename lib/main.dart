@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:skility_x/core/config/Di.dart';
+import 'package:skility_x/core/config/init_dependencies.dart';
 import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/view/themes/theme_manager.dart';
 import 'package:toastification/toastification.dart';
@@ -9,11 +9,8 @@ import 'package:toastification/toastification.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await InitDependencies.initDotEnv();
-
-  await InitDependencies.initFirebase();
-
-  InitDependencies.initCrashlatics();
+  // initilizing dependencies
+  await InitDependencies.initBootstraps();
 
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) => runApp(ProviderScope(child: const SkilityX())));

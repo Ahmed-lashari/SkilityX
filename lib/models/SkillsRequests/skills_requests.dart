@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'generated/skills_requests.g.dart';
+part 'skills_requests.g.dart';
 
 @HiveType(typeId: 2)
 @JsonSerializable()
@@ -32,7 +32,7 @@ class SkillsRequests {
   final String senderContactNumber;
   @HiveField(12)
   final String fcmToken;
-  @HiveField(3)
+  @HiveField(13)
   final String senderPicUrl;
 
   const SkillsRequests(
