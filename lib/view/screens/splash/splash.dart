@@ -2,6 +2,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:skility_x/constants/app-icons.dart';
 import 'package:skility_x/core/config/route_config.dart';
+import 'package:skility_x/data_source/remote/Firebase/firebase_manager.dart';
+import 'package:skility_x/view/screens/auth/auth_screen.dart';
+import 'package:skility_x/view/screens/home/bottom_tabs.dart';
 import 'package:skility_x/view/widgets/custom_scaffold.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -34,9 +37,10 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    Timer(
-        Duration(seconds: 1),
-        () => AppNavigator.navigateTo(context,
-            sRoute: RouteEnum.authScreen.path));
+    final Widget widget =
+        (FirebaseManager.user?.uid != null) ? HomeTabs() : AuthScreen();
+
+    Timer(Duration(seconds: 1),
+        () => AppNavigator.startAsInitial(context, widgetRoute: widget));
   }
 }

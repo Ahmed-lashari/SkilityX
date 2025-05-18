@@ -8,10 +8,6 @@ class AuthLoginPassService {
         .createUserWithEmailAndPassword(email: email, password: password);
   }
 
-  static Future<void> logOut() async {
-    await FirebaseManager.auth.signOut();
-  }
-
   static Future<void> loginuser(String email, String password) async {
     await FirebaseManager.auth
         .signInWithEmailAndPassword(email: email, password: password);

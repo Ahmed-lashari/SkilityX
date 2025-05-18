@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:skility_x/constants/app_colors.dart';
+import 'package:skility_x/view/widgets/custom_progress_indicator.dart';
 import 'package:skility_x/view/widgets/custom_scaffold.dart';
 import 'package:toastification/toastification.dart';
 
@@ -89,5 +91,15 @@ class Utils {
   static handleError(String e, StackTrace? h) {
     debugPrint("\nERROR: ======= ${e}");
     debugPrint("\nSTACK-Trace: \n\n${h}");
+  }
+
+  static showLoading(BuildContext context) {
+    context.loaderOverlay.show(
+      widgetBuilder: (progress) => Center(child: GradientCircularProgress()),
+    );
+  }
+
+  static void cancelLoading(BuildContext context) {
+    context.loaderOverlay.hide();
   }
 }

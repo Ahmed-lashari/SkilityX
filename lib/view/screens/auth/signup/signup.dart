@@ -9,6 +9,10 @@ import 'package:skility_x/core/config/dep_injection/user_model.dart';
 import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/core/utils.dart/validators.dart';
 import 'package:skility_x/data_source/remote/Firebase/firebase_manager.dart';
+import 'package:skility_x/data_source/repository/auth/common_features.dart';
+// import 'package:skility_x/data_source/repository/auth/common_features.dart';
+import 'package:skility_x/view-model/action_controllers.dart/view/auth/github_oAuth_action.dart';
+import 'package:skility_x/view-model/action_controllers.dart/view/auth/google_oAuth_action.dart';
 import 'package:skility_x/view-model/action_controllers.dart/view/auth/signup_action.dart';
 import 'package:skility_x/view/screens/auth/select_profile_pic.dart';
 import 'package:skility_x/view/widgets/app_drop_down.dart';
@@ -65,12 +69,19 @@ class _SignUpUiState extends ConsumerState<SignUpUi> {
                 controllerKey: TextControllerKeys.passwordKey),
             CustomWidgets.actionButton(
                 label: 'Register',
-                onPressed: () => SignupAction.registerUser(ref, formKey)),
+                onPressed: () =>
+                    SignupAction.registerUser(context, ref, formKey)),
             CustomWidgets.actionButton(
                 label: 'Logout Instantly',
-                onPressed: () => SignupAction.logout()),
+                onPressed: () => AuthCommon.logout(context)),
             CustomWidgets.myDivider(text: "Or register using"),
-            CustomWidgets.OAuthOptions(),
+            CustomWidgets.OAuthOptions(
+              formKey: formKey,
+              GoogleOnTap: () =>
+                  GoogleOauthAction.registerUser(context, formKey, ref),
+              GithubOnTap: () =>
+                  GitHubOauthAction.registerUser(context, formKey, ref),
+            ),
             const SizedBox.shrink(),
           ],
         ),

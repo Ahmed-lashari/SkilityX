@@ -72,14 +72,20 @@ class CustomWidgets {
     );
   }
 
-  static Widget OAuthOptions({String? text, Color? color}) {
+  static Widget OAuthOptions({
+    String? text,
+    Color? color,
+    required GlobalKey<FormState> formKey,
+    required VoidCallback GoogleOnTap,
+    required VoidCallback GithubOnTap,
+  }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         _buildAuthOption(
-            text: "Google", icon: AppStaticIcons.gmail, onTap: () {}),
+            text: "Google", icon: AppStaticIcons.gmail, onTap: GoogleOnTap),
         _buildAuthOption(
-            text: "Github", icon: AppStaticIcons.github, onTap: () {}),
+            text: "Github", icon: AppStaticIcons.github, onTap: GithubOnTap),
       ],
     );
   }

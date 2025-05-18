@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skility_x/constants/app-icons.dart';
 import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
+import 'package:skility_x/data_source/remote/Firebase/firebase_manager.dart';
 import 'package:skility_x/view-model/action_controllers.dart/view/auth/toggle_button.dart';
 import 'package:skility_x/view/screens/auth/login/login.dart';
 import 'package:skility_x/view/screens/auth/signup/signup.dart';
@@ -25,6 +27,8 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
   final toggleButton = ToggleFilterButton();
   @override
   Widget build(BuildContext context) {
+    debugPrint(
+        'Auth Email: ${FirebaseManager.user?.email}\n\nAuth type: ${FirebaseManager.user?.providerData.map((ma) => ma.providerId)}');
     return CustomScaffold(
       body: Column(
         children: [_buildInfoUi(), _buildAuthUi()],
@@ -47,7 +51,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
               spacing: 20,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset('assets/skility_x_icon/skility_x.png', scale: 15),
+                Image.asset(AppImageIcons.appLogo, scale: 15),
                 Text(
                   "SkilityX",
                   textAlign: TextAlign.start,

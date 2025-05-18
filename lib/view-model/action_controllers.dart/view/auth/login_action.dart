@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skility_x/constants/app_keys/text_controller_keys.dart';
-// import 'package:skility_x/core/config/route_config.dart';
-// import 'package:skility_x/view/screens/home/bottom_tabs.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
 import 'package:skility_x/core/utils.dart/validators.dart';
 import 'package:skility_x/data_source/repository/auth/login_pass/auth_login_pass_repo.dart';
@@ -13,6 +11,7 @@ class LoginAction {
   static loginUser(
       BuildContext context, WidgetRef ref, GlobalKey<FormState> formKey) async {
     if (Validators.validateForm(formKey)) {
+      Utils.showLoading(context);
       final String email =
           ref.read(controllerTextProvider(TextControllerKeys.emailKey));
       final String password =
@@ -36,8 +35,9 @@ class LoginAction {
       }
     } else {
       Utils.toastMsg(
-          title: "Please select an image as well",
-          type: ToastificationType.warning);
+          title: "Please fill the credentials.", type: ToastificationType.info);
     }
+
+    Utils.cancelLoading(context);
   }
 }

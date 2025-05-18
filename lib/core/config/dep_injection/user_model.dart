@@ -25,7 +25,11 @@ class _UserModelNotifier extends StateNotifier<Users> {
             profilePicUrl: '',
             coverPhotoUrl: '',
             gender: '',
-            activeStatus: false));
+            activeStatus: false)) {
+    _initData();
+  }
+
+  Future<void> _initData() async {}
 
   void updateTextDetails(WidgetRef ref) {
     final String name =

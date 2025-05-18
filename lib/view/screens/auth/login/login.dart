@@ -4,6 +4,9 @@ import 'package:skility_x/constants/app-icons.dart';
 import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/constants/app_keys/text_controller_keys.dart';
 import 'package:skility_x/core/utils.dart/validators.dart';
+// import 'package:skility_x/data_source/repository/auth/common_features.dart';
+import 'package:skility_x/view-model/action_controllers.dart/view/auth/github_oAuth_action.dart';
+import 'package:skility_x/view-model/action_controllers.dart/view/auth/google_oAuth_action.dart';
 import 'package:skility_x/view-model/action_controllers.dart/view/auth/login_action.dart';
 import 'package:skility_x/view/widgets/app_textfield.dart';
 import 'package:skility_x/view/widgets/custom_widgets.dart';
@@ -35,9 +38,14 @@ class _LoginUiState extends ConsumerState<LoginUi> {
             CustomWidgets.actionButton(
                 label: 'Login',
                 onPressed: () => LoginAction.loginUser(context, ref, formKey)),
-            //  Validators.validateForm(formKey)
+            // CustomWidgets.actionButton(
+            //     label: 'LogOut', onPressed: () => AuthCommon.logout(context)),
             CustomWidgets.myDivider(text: "Or login with"),
-            CustomWidgets.OAuthOptions(),
+            CustomWidgets.OAuthOptions(
+              formKey: formKey,
+              GoogleOnTap: () => GoogleOauthAction.loginUser(context, ref),
+              GithubOnTap: () => GitHubOauthAction.loginUser(context, ref),
+            ),
             const SizedBox.shrink(),
           ],
         ),
