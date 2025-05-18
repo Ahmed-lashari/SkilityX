@@ -5,10 +5,12 @@ import 'package:toastification/toastification.dart';
 
 class AuthLoginPassRepo {
   // create account + handle errors
-  static Future<bool> signIn(String email, String password) async {
+  static Future<(UserCredential?, bool)> signIn(
+      String email, String password) async {
     try {
-      await AuthLoginPassService.registerUser(email.trim(), password.trim());
-      return true;
+      final cred = await AuthLoginPassService.registerUser(
+          email.trim(), password.trim());
+      return (cred, true);
     } on FirebaseAuthException catch (e, s) {
       switch (e.code) {
         case 'email-already-in-use':
@@ -41,27 +43,13 @@ class AuthLoginPassRepo {
               title: "Internal Error! Please try again later.",
               type: ToastificationType.warning);
       }
-
-      return false;
     } catch (e, s) {
       Utils.handleError('Unexpected error: $e', s);
       Utils.toastMsg(
           title: "Server side error. Please try again later.",
           type: ToastificationType.warning);
-      return false;
     }
-  }
-
-  static Future<bool> logOut() async {
-    try {
-      await AuthLoginPassService.logOut();
-      return true;
-    } on FirebaseAuthException catch (e, s) {
-      Utils.handleError('Logout failed: ${e.message}', s);
-    } catch (e, s) {
-      Utils.handleError('Unexpected error during logout: $e', s);
-    }
-    return false;
+    return (null, false);
   }
 
   // create account + handle errors

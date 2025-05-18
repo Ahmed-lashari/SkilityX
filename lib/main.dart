@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:skility_x/core/config/init_dependencies.dart';
 import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/view/themes/theme_manager.dart';
@@ -27,14 +28,16 @@ class _SkilityXState extends State<SkilityX> {
   @override
   Widget build(BuildContext context) {
     // optional but context independent
-    return ToastificationWrapper(
-      child: SafeArea(
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          themeMode: ThemeMode.dark,
-          theme: ThemeManager.darkTheme,
-          initialRoute: RouteEnum.splash.path,
-          routes: appRoutes,
+    return GlobalLoaderOverlay(
+      child: ToastificationWrapper(
+        child: SafeArea(
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            themeMode: ThemeMode.dark,
+            theme: ThemeManager.darkTheme,
+            initialRoute: RouteEnum.splash.path,
+            routes: appRoutes,
+          ),
         ),
       ),
     );

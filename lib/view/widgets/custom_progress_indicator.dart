@@ -52,7 +52,7 @@ class _GradientCircularProgressState extends State<GradientCircularProgress>
             strokeWidth: 6,
             strokeCap: StrokeCap.round,
             valueColor: AlwaysStoppedAnimation<Color>(AppColors.error),
-            backgroundColor: AppColors.transparent,
+            backgroundColor: AppColors.onBackground,
           ),
         ),
       ),
