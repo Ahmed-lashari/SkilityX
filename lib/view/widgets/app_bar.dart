@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skility_x/constants/app-icons.dart';
 import 'package:skility_x/constants/app_keys/text_controller_keys.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
+import 'package:skility_x/models/Users/users.dart';
 import 'package:skility_x/view/widgets/app_textfield.dart';
 import 'package:skility_x/view/widgets/bottom_nav_bar.dart';
 import 'package:skility_x/view/widgets/custom_widgets.dart';
@@ -11,6 +12,7 @@ AppBar myAppBar({
   List<Widget>? actions,
   Widget? title,
   bool showLeading = false,
+  Users? user,
   required BuildContext context,
 }) {
   return AppBar(
@@ -37,7 +39,7 @@ AppBar myAppBar({
             } else if (selectedIndex == 1) {
               return Text('Request Portal');
             } else {
-              return CustomWidgets.AppBarWelcom();
+              return CustomWidgets.AppBarWelcom(user!);
             }
           }),
         ),

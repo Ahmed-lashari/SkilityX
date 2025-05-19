@@ -19,7 +19,7 @@ class _SkillsScreenState extends State<SkillsScreen> {
   Widget build(BuildContext context) {
     debugPrint('building skills offers screen');
     return CustomScaffold(
-      hPadding: 0,
+      // hPadding: 0,
       isScrollable: true,
       body: Column(
         spacing: 16,

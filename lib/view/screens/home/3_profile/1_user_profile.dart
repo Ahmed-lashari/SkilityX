@@ -24,19 +24,15 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     debugPrint('building profile screen');
     return CustomScaffold(
-      backGroundColor: AppColors.unselectedItemIcon,
       hPadding: 0,
+      backGroundColor: AppColors.unselectedItemIcon,
       isScrollable: true,
       body: Column(
         children: [
           // imiage and user section using sstack
           _buildImageAndUserSection(),
 
-          // description
-          _buildDesription(),
-
-          // other details as needed
-          _buildOtherDetails(),
+          _buildBottomBody(),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -53,7 +49,6 @@ class _ProfileState extends State<Profile> {
   Widget _buildImageAndUserSection() {
     return Container(
       height: Utils.getHeight(context) * 0.4,
-      // color: AppColors.error,
       child: Stack(
         children: [_buildCoverPhoto(), _buildUserSection()],
       ),
@@ -171,11 +166,27 @@ class _ProfileState extends State<Profile> {
     );
   }
 
+  Widget _buildBottomBody() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Column(
+        spacing: 16,
+        children: [
+          // description
+          _buildDesription(),
+
+          // other details as needed
+          _buildOtherDetails(),
+        ],
+      ),
+    );
+  }
+
   Widget _buildDesription() {
     return Container(
       width: Utils.getWeidth(context),
       padding: EdgeInsets.all(10),
-      margin: EdgeInsets.all(5),
+      // margin: EdgeInsets.all(5),
       decoration: BoxDecoration(
           color: AppColors.error, borderRadius: BorderRadius.circular(10)),
       child: Text(

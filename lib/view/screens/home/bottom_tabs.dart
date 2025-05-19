@@ -36,9 +36,11 @@ class _HomeTabsState extends ConsumerState<HomeTabs> {
     debugPrint('home nav bar tabs screen');
 
     return CustomScaffold(
+      hPadding: 0,
       key: persistentkey,
-      drawer: myDrawer(persistentkey: persistentkey),
+      drawer: myDrawer(persistentkey: persistentkey, user: widget.user),
       appBar: myAppBar(
+        user: widget.user,
         context: context,
         actions: [
           IconButton(
