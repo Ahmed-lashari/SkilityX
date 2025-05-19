@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skility_x/constants/app-icons.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
+import 'package:skility_x/models/Users/users.dart';
 import 'package:skility_x/view/screens/home/2_request_portal/request_tabs.dart';
 import 'package:skility_x/view/screens/home/3_profile/1_user_profile.dart';
 import 'package:skility_x/view/screens/home/1_skills/1_skills_offered.dart';
@@ -13,7 +14,8 @@ import 'package:skility_x/view/widgets/custom_scaffold.dart';
 import 'package:skility_x/view/widgets/keep_alive_wrapper.dart';
 
 class HomeTabs extends ConsumerStatefulWidget {
-  const HomeTabs({super.key});
+  final Users user;
+  const HomeTabs({super.key, required this.user});
 
   @override
   ConsumerState<HomeTabs> createState() => _HomeTabsState();

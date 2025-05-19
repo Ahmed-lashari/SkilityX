@@ -53,8 +53,9 @@ class SignupAction {
           }
           final isSaved = await HiveuserDataRepo.saveUserData(userWithId);
           if (isSaved) {
+            await AppNavigator.navigateTo(context,
+                wRoute: HomeTabs(user: userWithId));
             Utils.cancelLoading(context);
-            await AppNavigator.navigateTo(context, wRoute: HomeTabs());
           } else {
             debugPrint("FALSE RETURNED WHILE SAVING USER DATA IN THE HIVE.");
           }
