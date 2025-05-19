@@ -15,4 +15,10 @@ class HiveUserDataService {
 
     await box.put(user.id, user);
   }
+
+  static Future<void> updateuserData(Users user) async {
+    final box = await _openBox();
+
+    await box.put(user.id, user);
+  }
 }

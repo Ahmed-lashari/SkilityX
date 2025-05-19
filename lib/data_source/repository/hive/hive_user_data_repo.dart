@@ -12,4 +12,14 @@ class HiveuserDataRepo {
       return false;
     }
   }
+
+  static Future<bool> updateUserData(Users user) async {
+    try {
+      await HiveUserDataService.updateuserData(user);
+      return true;
+    } catch (e, h) {
+      Utils.handleError(e.toString(), h);
+      return false;
+    }
+  }
 }

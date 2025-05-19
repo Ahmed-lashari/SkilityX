@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skility_x/constants/app-icons.dart';
 import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/constants/app_keys/hero_keys.dart';
-import 'package:skility_x/constants/app_keys/image_keys.dart';
+import 'package:skility_x/core/config/dep_injection/user_model.dart';
 import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
 import 'package:skility_x/models/Users/users.dart';
@@ -30,21 +31,22 @@ class _ProfileState extends State<Profile> {
       backGroundColor: AppColors.unselectedItemIcon,
       isScrollable: true,
       body: Column(
-        children: [
-          // imiage and user section using sstack
-          _buildImageAndUserSection(),
+        spacing: 16,
+        // imiage and user section using stack
+        children: [_buildImageAndUserSection(), _buildBottomBody()],
+      ),
+      floatingActionButton: _buildFAB(),
+    );
+  }
 
-          _buildBottomBody(),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.error,
-        foregroundColor: AppColors.onBackground,
-        heroTag: HeroKeys.fabActionHeroTag,
-        onPressed: () =>
-            AppNavigator.navigateTo(context, wRoute: AdvertiseCourseScreen()),
-        child: CustomIcon(icon: AppImageIcons.appLogo, iconSize: 30),
-      ),
+  Widget _buildFAB() {
+    return FloatingActionButton(
+      backgroundColor: AppColors.error,
+      foregroundColor: AppColors.onBackground,
+      heroTag: HeroKeys.fabActionHeroTag,
+      onPressed: () =>
+          AppNavigator.navigateTo(context, wRoute: AdvertiseCourseScreen()),
+      child: CustomIcon(icon: AppImageIcons.appLogo, iconSize: 30),
     );
   }
 
@@ -68,10 +70,15 @@ class _ProfileState extends State<Profile> {
       ),
       child: Stack(children: [
         Positioned.fill(
-          child: ProfilePicture(
-            isCover: true,
-            url:
-                "https://plus.unsplash.com/premium_photo-1673177667569-e3321a8d8256?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y292ZXIlMjBwaG90b3xlbnwwfHwwfHx8MA%3D%3D",
+          child: Consumer(
+            builder: (context, ref, child) {
+              final updatedUser = ref.watch(userModelDi);
+              debugPrint("building only cover photo");
+              return ProfilePicture(
+                isCover: true,
+                url: "${updatedUser.coverPhotoUrl}",
+              );
+            },
           ),
         ),
         Positioned(
@@ -79,7 +86,9 @@ class _ProfileState extends State<Profile> {
           top: 10,
           child: GestureDetector(
             onTap: () => CustomWidgets.customBottomSheet(
-                context, BottomSheetCoverPhoto(), AppColors.transparent),
+                context,
+                BottomSheetCoverPhoto(user: widget.user),
+                AppColors.transparent),
             child: CustomIcon(
               icon: AppImageIcons.camera,
               iconSize: 20,
@@ -93,7 +102,7 @@ class _ProfileState extends State<Profile> {
 
   Widget _buildUserSection() {
     return Positioned(
-      top: Utils.getHeight(context) * 0.169,
+      top: Utils.getHeight(context) * 0.2,
       left: 0,
       right: 0,
       child: Container(
@@ -130,7 +139,7 @@ class _ProfileState extends State<Profile> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "MUHAMMAD A LASHARI",
+              widget.user.name.toUpperCase(),
               maxLines: 2,
               style: TextStyle(
                   fontFamily: AppTypography.scotishBold,
@@ -139,7 +148,7 @@ class _ProfileState extends State<Profile> {
                   color: AppColors.unselectedItemIcon),
             ),
             Text(
-              "PROGRAMMER",
+              widget.user.mainSkill.toUpperCase(),
               style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
@@ -161,7 +170,7 @@ class _ProfileState extends State<Profile> {
             color: AppColors.transparent,
             borderRadius: BorderRadius.circular(10)),
         child: ProfilePicture(
-          url: AvatarKeys.pokieBoy,
+          url: "${widget.user.profilePicUrl}",
           // imageSize: 100,
         ),
       ),

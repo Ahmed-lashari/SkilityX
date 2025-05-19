@@ -79,8 +79,8 @@ class _myDrawerState extends State<myDrawer> {
             ),
             Spacer(),
             GestureDetector(
-              onTap: () =>
-                  AppNavigator.navigateTo(context, wRoute: SettingsScreen()),
+              onTap: () => AppNavigator.navigateTo(context,
+                  wRoute: SettingsScreen(user: widget.user)),
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(

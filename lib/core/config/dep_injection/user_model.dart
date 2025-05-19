@@ -31,6 +31,10 @@ class _UserModelNotifier extends StateNotifier<Users> {
 
   Future<void> _initData() async {}
 
+  void updateState(Users user) {
+    state = user;
+  }
+
   void updateTextDetails(WidgetRef ref) {
     final String name =
         ref.read(controllerTextProvider(TextControllerKeys.nameKey));

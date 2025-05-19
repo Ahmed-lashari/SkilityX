@@ -2,32 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:skility_x/constants/app-icons.dart';
 import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/core/config/route_config.dart';
+import 'package:skility_x/models/Users/users.dart';
 import 'package:skility_x/view/screens/home/4_settings/cover_photo_setting.dart';
 import 'package:skility_x/view/themes/theme_conts/typography.dart';
+import 'package:skility_x/view/widgets/app_bar.dart';
 import 'package:skility_x/view/widgets/custom_scaffold.dart';
-import 'package:skility_x/view/widgets/custom_widgets.dart';
 import 'package:skility_x/view/widgets/image_ui.dart';
 
 class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
+  final Users user;
+  const SettingsScreen({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      appBar: AppBar(
-        title: Text(
-          'Settings',
-          style: TextStyle(fontFamily: AppTypography.scotishMedium),
-        ),
-        leading: CustomWidgets.backNavigationIconButt(context: context),
-      ),
+      appBar: myAppBar(
+          context: context, title: Text('Settings'), showLeading: true),
       body: Column(
         spacing: 10,
         children: [
           SizedBox.shrink(),
           _SettingsTileCard(
-              onTap: () =>
-                  AppNavigator.navigateTo(context, wRoute: CoverPhotoSetting()),
+              onTap: () => AppNavigator.navigateTo(context,
+                  wRoute: CoverPhotoSetting(user: user)),
               leadingIcon: AppImageIcons.camera,
               title: "Cover Photos"),
           _SettingsTileCard(

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skility_x/constants/app_colors.dart';
+import 'package:skility_x/models/Users/users.dart';
+import 'package:skility_x/view-model/action_controllers.dart/view/screens/home/4_settings/cover_photo_setting.dart';
 import 'package:skility_x/view/themes/theme_conts/typography.dart';
 import 'package:skility_x/view/ui_config/view/screens/home/4_settings/cover_photo_setting.dart';
 import 'package:skility_x/view/widgets/bottom_sheets/change_cover_photo.dart';
@@ -7,7 +10,8 @@ import 'package:skility_x/view/widgets/custom_scaffold.dart';
 import 'package:skility_x/view/widgets/custom_widgets.dart';
 
 class CoverPhotoSetting extends StatefulWidget {
-  const CoverPhotoSetting({super.key});
+  final Users user;
+  const CoverPhotoSetting({super.key, required this.user});
 
   @override
   State<CoverPhotoSetting> createState() => _CoverPhotoSettingState();
@@ -44,28 +48,28 @@ class _CoverPhotoSettingState extends State<CoverPhotoSetting> {
             title = 'Tech Covers';
           }
           return _CoverPhotoCategoryCard(
-            title: title,
-            imageUrls: isList[index],
-          );
+              title: title, imageUrls: isList[index], user: widget.user);
         },
       ),
     );
   }
 }
 
-class _CoverPhotoCategoryCard extends StatelessWidget {
+class _CoverPhotoCategoryCard extends ConsumerWidget {
   final String title;
   final List<String> imageUrls;
+  final Users user;
 
   const _CoverPhotoCategoryCard({
     required this.title,
     required this.imageUrls,
+    required this.user,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+      padding: const EdgeInsets.symmetric(vertical: 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -88,7 +92,8 @@ class _CoverPhotoCategoryCard extends StatelessWidget {
                       ChangeImage(
                         imageUrl: imageUrls[index],
                         title: title,
-                        onTap: () {},
+                        onTap: () => CoverPhotoSettingAction.updateCoverPhoto(
+                            context, ref, user, imageUrls[index]),
                       ),
                       AppColors.transparent),
                   child: Ink(

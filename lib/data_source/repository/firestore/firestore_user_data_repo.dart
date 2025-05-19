@@ -26,4 +26,15 @@ class FirestoreUserDataRepo {
       return user;
     }
   }
+
+  static Future<bool> updateCoverPhotos(Users user, String url) async {
+    try {
+      final userWithCoverPhoto = user.copyWith(coverPhotoUrl: url);
+      await FirestoreUserDataService.updateCoverPhoto(userWithCoverPhoto);
+      return true;
+    } catch (e, h) {
+      Utils.handleError(e.toString(), h);
+      return false;
+    }
+  }
 }

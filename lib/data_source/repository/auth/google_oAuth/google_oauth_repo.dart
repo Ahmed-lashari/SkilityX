@@ -3,7 +3,7 @@ import 'package:skility_x/core/utils.dart/utils.dart';
 import 'package:skility_x/data_source/remote/Firebase/auth/oauth/google_auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:skility_x/data_source/repository/auth/common_features.dart';
-import 'package:skility_x/data_source/repository/firestore/user_data_service.dart';
+import 'package:skility_x/data_source/repository/firestore/firestore_user_data_repo.dart';
 import 'package:toastification/toastification.dart';
 
 class GoogleOauthRepo {

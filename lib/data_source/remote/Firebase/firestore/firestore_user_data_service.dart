@@ -34,4 +34,11 @@ class FirestoreUserDataService {
 
     return null;
   }
+
+  static Future<void> updateCoverPhoto(Users user) async {
+    await FirebaseManager.firestore
+        .collection(FirestoreCollectionKeys.users)
+        .doc(user.id)
+        .update(user.toJson());
+  }
 }
