@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skility_x/constants/app-icons.dart';
 import 'package:skility_x/data_source/repository/auth/common_features.dart';
 import 'package:skility_x/view/widgets/custom_scaffold.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  ConsumerState<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>
+class _SplashScreenState extends ConsumerState<SplashScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
@@ -33,8 +34,7 @@ class _SplashScreenState extends State<SplashScreen>
     );
 
     _controller.forward();
-
-    AuthCommon.checkAuth(context);
+    AuthCommon.checkAuth(context, ref);
   }
 
   @override

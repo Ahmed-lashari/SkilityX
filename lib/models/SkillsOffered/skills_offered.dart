@@ -49,7 +49,7 @@ class SkillsOffered {
     required this.uploaderPicUrl,
   });
 
-  SkillsOffered copyWith(
+  SkillsOffered copyWith({
     final String? id,
     final String? title,
     final String? description,
@@ -63,7 +63,7 @@ class SkillsOffered {
     final String? uploaderName,
     final String? courseFee,
     final String? uploaderPicUrl,
-  ) {
+  }) {
     return SkillsOffered(
         offerId: id ?? this.offerId,
         title: title ?? this.title,
