@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skility_x/core/config/dep_injection/user_model.dart';
 import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
 import 'package:skility_x/data_source/remote/Firebase/firebase_manager.dart';
@@ -28,7 +30,7 @@ class AuthCommon {
     return false;
   }
 
-  static Future<void> checkAuth(BuildContext context) async {
+  static Future<void> checkAuth(BuildContext context, WidgetRef ref) async {
     await Future.delayed(const Duration(seconds: 1), () async {
       Widget nextScreen;
 
@@ -39,6 +41,9 @@ class AuthCommon {
             FirebaseManager.user!.uid);
 
         if (firebaseData != null) {
+          // updating the state
+          ref.read(userModelDi.notifier).updateState(firebaseData);
+
           await HiveuserDataRepo.saveUserData(firebaseData);
           nextScreen = HomeTabs(user: firebaseData);
         } else {

@@ -5,9 +5,9 @@ import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/constants/app_keys/text_controller_keys.dart';
 import 'package:skility_x/core/utils.dart/validators.dart';
 // import 'package:skility_x/data_source/repository/auth/common_features.dart';
-import 'package:skility_x/view-model/action_controllers.dart/view/auth/github_oAuth_action.dart';
-import 'package:skility_x/view-model/action_controllers.dart/view/auth/google_oAuth_action.dart';
-import 'package:skility_x/view-model/action_controllers.dart/view/auth/login_action.dart';
+import 'package:skility_x/view-model/action_controllers.dart/view/screens/auth/github_oAuth_action.dart';
+import 'package:skility_x/view-model/action_controllers.dart/view/screens/auth/google_oAuth_action.dart';
+import 'package:skility_x/view-model/action_controllers.dart/view/screens/auth/login_action.dart';
 import 'package:skility_x/view/widgets/app_textfield.dart';
 import 'package:skility_x/view/widgets/custom_widgets.dart';
 

@@ -46,7 +46,7 @@ final dropdownItemsProvider =
         "35 - 40",
         "45 >",
       ];
-    case DropDownKeys.daysKey:
+    case DropDownKeys.durationKey:
       return [
         "1 - 5",
         "5 - 10",

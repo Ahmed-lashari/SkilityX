@@ -44,8 +44,8 @@ class _ProfileState extends State<Profile> {
       backgroundColor: AppColors.error,
       foregroundColor: AppColors.onBackground,
       heroTag: HeroKeys.fabActionHeroTag,
-      onPressed: () =>
-          AppNavigator.navigateTo(context, wRoute: AdvertiseCourseScreen()),
+      onPressed: () => AppNavigator.navigateTo(context,
+          wRoute: AdvertiseCourseScreen(user: widget.user)),
       child: CustomIcon(icon: AppImageIcons.appLogo, iconSize: 30),
     );
   }
