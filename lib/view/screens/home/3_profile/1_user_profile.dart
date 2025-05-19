@@ -5,6 +5,7 @@ import 'package:skility_x/constants/app_keys/hero_keys.dart';
 import 'package:skility_x/constants/app_keys/image_keys.dart';
 import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
+import 'package:skility_x/models/Users/users.dart';
 import 'package:skility_x/view/screens/home/3_profile/2_adv_course_screen.dart';
 import 'package:skility_x/view/themes/theme_conts/typography.dart';
 import 'package:skility_x/view/widgets/bottom_sheets/change_cover_photo.dart';
@@ -13,7 +14,8 @@ import 'package:skility_x/view/widgets/custom_widgets.dart';
 import 'package:skility_x/view/widgets/image_ui.dart';
 
 class Profile extends StatefulWidget {
-  const Profile({super.key});
+  final Users user;
+  const Profile({super.key, required this.user});
 
   @override
   State<Profile> createState() => _ProfileState();
