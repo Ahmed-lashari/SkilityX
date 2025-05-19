@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/core/config/route_config.dart';
+import 'package:skility_x/models/Users/users.dart';
 import 'package:skility_x/view/screens/home/4_settings/cover_photo_setting.dart';
 import 'package:skility_x/view/themes/theme_conts/typography.dart';
 import 'package:skility_x/view/widgets/custom_widgets.dart';
 
 class BottomSheetCoverPhoto extends StatelessWidget {
-  const BottomSheetCoverPhoto({super.key});
+  final Users user;
+  const BottomSheetCoverPhoto({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,8 @@ class BottomSheetCoverPhoto extends StatelessWidget {
             label: 'Add Cover Photo',
             onPressed: () {
               AppNavigator.navigateBack(context);
-              AppNavigator.navigateTo(context, wRoute: CoverPhotoSetting());
+              AppNavigator.navigateTo(context,
+                  wRoute: CoverPhotoSetting(user: user));
             })
       ],
     );

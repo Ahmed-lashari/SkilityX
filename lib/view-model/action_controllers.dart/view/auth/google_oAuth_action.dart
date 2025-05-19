@@ -5,8 +5,8 @@ import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
 import 'package:skility_x/core/utils.dart/validators.dart';
 import 'package:skility_x/data_source/repository/auth/google_oAuth/google_oauth_repo.dart';
-import 'package:skility_x/data_source/repository/firestore/user_data_service.dart';
-import 'package:skility_x/data_source/repository/hive/hive_user_data.dart';
+import 'package:skility_x/data_source/repository/firestore/firestore_user_data_repo.dart';
+import 'package:skility_x/data_source/repository/hive/hive_user_data_repo.dart';
 import 'package:skility_x/models/Users/users.dart';
 import 'package:skility_x/view/screens/home/bottom_tabs.dart';
 
