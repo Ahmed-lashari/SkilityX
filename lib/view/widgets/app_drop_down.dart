@@ -13,6 +13,7 @@ class myDropDwon extends ConsumerStatefulWidget {
   final IconData prefixIcon;
   final String dropdwonKey;
   final String? nextFocusKey;
+  final EdgeInsets? contentpadding;
 
   const myDropDwon({
     super.key,
@@ -20,6 +21,7 @@ class myDropDwon extends ConsumerStatefulWidget {
     required this.prefixIcon,
     required this.dropdwonKey,
     this.nextFocusKey,
+    this.contentpadding,
   });
 
   @override
@@ -52,11 +54,9 @@ class _YapDropdownState extends ConsumerState<myDropDwon> {
               ))
           .toList(),
       decoration: InputDecoration(
+        contentPadding: widget.contentpadding,
         prefixIcon: Icon(widget.prefixIcon, size: 20),
         hintText: widget.hintText,
-        // hintStyle: TextStyle(
-        //     color: AppColors.error.withAlpha(100),
-        //     fontFamily: AppTypography.scotishRegular),
       ),
       focusNode: currFocus,
       dropdownColor: AppColors.unselectedItemIcon,

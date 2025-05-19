@@ -3,9 +3,9 @@ import 'package:skility_x/constants/app-icons.dart';
 import 'package:skility_x/constants/app_keys/drop_down_keys.dart';
 import 'package:skility_x/view/ui_config/view/screens/home/1_skills/1_skills_offered.dart';
 import 'package:skility_x/view/ui_config/view/screens/home/1_skills/2_filter_menu.dart';
+import 'package:skility_x/view/widgets/app_bar.dart';
 import 'package:skility_x/view/widgets/app_drop_down.dart';
 import 'package:skility_x/view/widgets/custom_scaffold.dart';
-import 'package:skility_x/view/widgets/custom_widgets.dart';
 import 'package:skility_x/view/widgets/skills_banner.dart';
 
 class FilterSkills extends StatefulWidget {
@@ -20,11 +20,18 @@ class _FilterSkillsState extends State<FilterSkills> {
   Widget build(BuildContext context) {
     return CustomScaffold(
       isScrollable: true,
+      appBar: myAppBar(
+          context: context,
+          showLeading: true,
+          title: myDropDwon(
+              contentpadding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+              prefixIcon: AppStaticIcons.search,
+              hintText: 'Search...',
+              dropdwonKey: DropDownKeys.searchSkills)),
       body: Column(
         spacing: 16,
         children: [
           SizedBox.shrink(),
-          _header(),
 
           // academic skills
           SkillsCard("Academics", _academicList),
@@ -41,20 +48,6 @@ class _FilterSkillsState extends State<FilterSkills> {
           SizedBox.shrink(),
         ],
       ),
-    );
-  }
-
-  Widget _header() {
-    return Row(
-      children: [
-        CustomWidgets.backNavigationIconButt(context: context),
-        Expanded(
-          child: myDropDwon(
-              prefixIcon: AppStaticIcons.search,
-              hintText: 'Search...',
-              dropdwonKey: DropDownKeys.searchSkills),
-        )
-      ],
     );
   }
 

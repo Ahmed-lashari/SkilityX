@@ -12,4 +12,13 @@ class FirestoreSkillsOfferedRepo {
       return false;
     }
   }
+
+  static Future<List<SkillsOffered>> getFilteredCoursesList(String key) async {
+    try {
+      return await FirestoreSkillsOfferedService.getFilteredCoursesList(key);
+    } catch (e, h) {
+      Utils.handleError(e.toString(), h);
+      return [];
+    }
+  }
 }
