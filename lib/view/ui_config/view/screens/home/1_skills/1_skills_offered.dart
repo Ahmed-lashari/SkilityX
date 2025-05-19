@@ -24,11 +24,11 @@ class SkillsOfferedConfig {
     return [
       SkillsBanners(
           icon: AppImageIcons.academics,
-          label: "Academics",
+          label: "Mathematics",
           color: AppColors.error),
       SkillsBanners(
           icon: AppImageIcons.coding,
-          label: "Programming",
+          label: "Web - Dev",
           color: AppColors.primary),
       SkillsBanners(
           icon: AppImageIcons.dancing,
@@ -36,21 +36,19 @@ class SkillsOfferedConfig {
           color: AppColors.secondary),
       SkillsBanners(
           icon: AppImageIcons.data_analyss,
-          label: "Analysis",
+          label: "Robotics",
           color: AppColors.onBackground),
-      SkillsBanners(
-          icon: AppImageIcons.music, label: "Music", color: AppColors.error),
       SkillsBanners(
           icon: AppImageIcons.painting,
           label: "Painting",
           color: AppColors.primary),
       SkillsBanners(
           icon: AppImageIcons.singing,
-          label: "Singing",
+          label: "Music",
           color: AppColors.secondary),
       SkillsBanners(
           icon: AppImageIcons.writing,
-          label: "Writing",
+          label: "Language",
           color: AppColors.onBackground)
     ];
   }

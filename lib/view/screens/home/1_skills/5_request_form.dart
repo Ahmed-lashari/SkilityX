@@ -3,6 +3,7 @@ import 'package:skility_x/constants/app-icons.dart';
 import 'package:skility_x/constants/app_keys/hero_keys.dart';
 import 'package:skility_x/constants/app_keys/text_controller_keys.dart';
 import 'package:skility_x/core/utils.dart/validators.dart';
+import 'package:skility_x/models/SkillsOffered/skills_offered.dart';
 import 'package:skility_x/view/ui_config/view/screens/home/1_skills/3_filter_screen.dart';
 import 'package:skility_x/view/widgets/app_textfield.dart';
 import 'package:skility_x/view/widgets/custom_scaffold.dart';
@@ -11,8 +12,13 @@ import 'package:skility_x/view/widgets/skills_banner.dart';
 
 class SkillRequestForm extends StatefulWidget {
   final int index;
+  final SkillsOffered data;
   final FilterColorModel color;
-  const SkillRequestForm({super.key, required this.index, required this.color});
+  const SkillRequestForm(
+      {super.key,
+      required this.data,
+      required this.index,
+      required this.color});
 
   @override
   State<SkillRequestForm> createState() => Skill_RequestFormState();
@@ -29,6 +35,7 @@ class Skill_RequestFormState extends State<SkillRequestForm> {
         children: [
           SizedBox.shrink(),
           SkillCard(
+            data: widget.data,
             colorModel: widget.color,
             index: widget.index,
             showLearningButton: false,

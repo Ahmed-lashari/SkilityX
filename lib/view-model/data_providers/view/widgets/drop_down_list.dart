@@ -10,26 +10,34 @@ final dropdownItemsProvider =
 
     case DropDownKeys.searchSkills:
       final skills = [
+        // acadedmic
         'Mathematics',
         'History',
         'Language',
         'Science',
+
+        //artistic
         'Music',
+        'Dancing',
         'Painting',
-        'Photography / Editing',
-        'Videography / Editing',
+        'Photography',
+        'Videography',
+
+        // languages
         'Arabic',
         'Chinese',
         'English',
         'Urdu',
         'Japanese',
         'Hindi',
-        'Artificial Intelligence',
-        'App - Development',
-        'Web - Development',
+
+        // technical
+        'AI',
+        'App - Dev',
+        'Web - Dev',
         'Cyber Security',
-        'Robotics',
         'UI / UX',
+        'Robotics',
       ];
       skills.sort();
       return skills;

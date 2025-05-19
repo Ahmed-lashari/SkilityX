@@ -2,22 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
+import 'package:skility_x/models/SkillsOffered/skills_offered.dart';
 import 'package:skility_x/view/screens/home/1_skills/3_filter_screen.dart';
+import 'package:skility_x/view/themes/theme_conts/typography.dart';
 import 'package:skility_x/view/widgets/image_ui.dart';
 
 import 'package:skility_x/constants/app_keys/hero_keys.dart';
-import 'package:skility_x/constants/app_keys/image_keys.dart';
 import 'package:skility_x/view/ui_config/view/screens/home/1_skills/3_filter_screen.dart';
 import 'package:skility_x/view/widgets/custom_widgets.dart';
 
 class SkillCard extends StatelessWidget {
   final FilterColorModel colorModel;
   final int index;
+  final SkillsOffered data;
   final bool showLearningButton;
   final Color? navIconColor;
   const SkillCard(
       {required this.colorModel,
       required this.index,
+      required this.data,
       this.navIconColor,
       this.showLearningButton = false});
 
@@ -25,8 +28,7 @@ class SkillCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: Utils.getWeidth(context),
-        // height: Utils.getHeight(context) * 0.4,
-        margin: const EdgeInsets.only(bottom: 5),
+        margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
@@ -38,23 +40,23 @@ class SkillCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // username and picture
-            _buildPrsonalDetails(context),
+            _buildPrsonalDetails(context, data),
 
             // course details
-            _buildDescription(),
+            _buildDescription(data.description),
 
             // days + lessons + start LEarning button
-            _buildButtons(context),
+            _buildButtons(context, data),
           ],
         ));
   }
 
-  Widget _buildPrsonalDetails(BuildContext context) {
+  Widget _buildPrsonalDetails(BuildContext context, SkillsOffered data) {
     return Row(
       children: [
         _buildNavButton(context),
-        _buildUserNameSkill(),
-        _buildPicture(),
+        _buildUserNameSkill(data),
+        _buildPicture(data.uploaderPicUrl),
       ],
     );
   }
@@ -66,47 +68,50 @@ class SkillCard extends StatelessWidget {
         : SizedBox.shrink();
   }
 
-  Widget _buildUserNameSkill() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Hero(
-          tag: "${HeroKeys.filterUserNameKey}_$index",
-          child: Material(
-            type: MaterialType.transparency,
-            child: Text(
-              'Fatima Noman',
-              style: TextStyle(
-                  color: colorModel.textColor,
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold),
-            ),
+  Widget _buildUserNameSkill(SkillsOffered data) {
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            data.title,
+            style: TextStyle(
+                color: colorModel.textColor,
+                fontSize: 20,
+                fontFamily: AppTypography.scotishBold,
+                fontWeight: FontWeight.bold),
           ),
-        ),
-        Text(
-          'Artificial intelligence',
-          style: TextStyle(
-              color: colorModel.textColor,
-              fontSize: 16,
-              fontWeight: FontWeight.bold),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildPicture() {
-    return Hero(
-      tag: "${HeroKeys.filterProfileKey}_$index",
-      child: ProfilePicture(
-        imageSize: 80,
-        url: AvatarKeys.pokieBoy,
+          Hero(
+              tag: "${HeroKeys.filterUserNameKey}_$index",
+              child: Material(
+                type: MaterialType.transparency,
+                child: Text(
+                  "by: ${data.uploaderName}",
+                  style: TextStyle(
+                      color: colorModel.textColor,
+                      fontSize: 16,
+                      fontFamily: AppTypography.scotishBold,
+                      fontWeight: FontWeight.bold),
+                ),
+              ))
+        ],
       ),
     );
   }
 
-  Widget _buildDescription() {
+  Widget _buildPicture(String url) {
+    return Hero(
+      tag: "${HeroKeys.filterProfileKey}_$index",
+      child: ProfilePicture(
+        imageSize: 80,
+        url: url,
+      ),
+    );
+  }
+
+  Widget _buildDescription(String description) {
     return Text(
-      'I am an Artificial Inteligence Engineer and willing to help beginners or fresh developer into building Ai models. Feel free to reach me out using the provided deep links.',
+      description,
       maxLines: 4,
       textAlign: TextAlign.justify,
       style: TextStyle(
@@ -116,7 +121,7 @@ class SkillCard extends StatelessWidget {
     );
   }
 
-  Widget _buildButtons(BuildContext context) {
+  Widget _buildButtons(BuildContext context, SkillsOffered data) {
     return Container(
         width: Utils.getWeidth(context),
         padding: const EdgeInsets.all(10),
@@ -129,16 +134,17 @@ class SkillCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             // lessons and duration
-            _buildDaysLessons(),
+            _buildDaysLessons(data),
 
             // start learingn button
             if (showLearningButton)
-              CustomWidgets.anotherActionButton(context, index, colorModel),
+              CustomWidgets.anotherActionButton(
+                  context, index, colorModel, data),
           ],
         ));
   }
 
-  Widget _buildDaysLessons() {
+  Widget _buildDaysLessons(SkillsOffered data) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -148,7 +154,7 @@ class SkillCard extends StatelessWidget {
           spacing: 16,
           children: [
             Text(
-              '30',
+              data.courseDuration,
               maxLines: 4,
               textAlign: TextAlign.justify,
               style: TextStyle(
@@ -174,7 +180,7 @@ class SkillCard extends StatelessWidget {
           spacing: 16,
           children: [
             Text(
-              '30',
+              data.courseLessons,
               maxLines: 4,
               textAlign: TextAlign.justify,
               style: TextStyle(

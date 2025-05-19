@@ -14,4 +14,16 @@ class FirestoreSkillsOfferedService {
 
     await docRef.set(skillsOfferedWithId.toJson());
   }
+
+  static Future<List<SkillsOffered>> getFilteredCoursesList(String key) async {
+    final docList = await FirebaseManager.firestore
+        .collection(FirestoreCollectionKeys.skills_offered)
+        .where('category', isEqualTo: key)
+        .get();
+
+    final data =
+        docList.docs.map((map) => SkillsOffered.fromJson(map.data())).toList();
+
+    return data;
+  }
 }

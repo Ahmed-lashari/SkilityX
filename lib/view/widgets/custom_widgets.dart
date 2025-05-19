@@ -6,6 +6,7 @@ import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/constants/app_keys/hero_keys.dart';
 import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
+import 'package:skility_x/models/SkillsOffered/skills_offered.dart';
 import 'package:skility_x/models/Users/users.dart';
 import 'package:skility_x/view/screens/home/1_skills/4_skill_details.dart';
 import 'package:skility_x/view/themes/theme_conts/typography.dart';
@@ -129,21 +130,10 @@ class CustomWidgets {
           icon: CustomIcon(
             icon: AppImageIcons.leftarrow,
             color: iconColor ?? AppColors.onBackground,
-            iconSize: 25,
+            iconSize: 30,
           )),
     );
   }
-
-  // static Widget onScreenLoading() {
-  //   return LoaderOverlay(
-  //     overlayWidgetBuilder: (_) {
-  //       return Center(
-  //         child: GradientCircularProgress(),
-  //       );
-  //     },
-  //     overlayColor: A.withOpacity(0.8), // screen background coloro
-  //   );
-  // }
 
   static void customBottomSheet(
       BuildContext context, Widget body, Color color) {
@@ -165,13 +155,14 @@ class CustomWidgets {
     );
   }
 
-  static Widget anotherActionButton(
-      BuildContext context, int index, FilterColorModel colorModel) {
+  static Widget anotherActionButton(BuildContext context, int index,
+      FilterColorModel colorModel, SkillsOffered data) {
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
         onTap: () => AppNavigator.navigateTo(context,
             wRoute: SkillDetailsScreen(
+              data: data,
               index: index,
               color: colorModel,
             )),
