@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:skility_x/constants/app-icons.dart';
 import 'package:skility_x/constants/app_colors.dart';
-import 'package:skility_x/constants/app_keys/image_keys.dart';
 import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
+import 'package:skility_x/models/Users/users.dart';
 import 'package:skility_x/view/screens/home/4_settings/0_settings.dart';
 import 'package:skility_x/view/themes/theme_conts/typography.dart';
 import 'package:skility_x/view/widgets/custom_scaffold.dart';
@@ -11,7 +11,8 @@ import 'package:skility_x/view/widgets/image_ui.dart';
 
 class myDrawer extends StatefulWidget {
   final GlobalKey<CustomScaffoldState> persistentkey;
-  const myDrawer({super.key, required this.persistentkey});
+  final Users user;
+  const myDrawer({super.key, required this.persistentkey, required this.user});
 
   @override
   State<myDrawer> createState() => _myDrawerState();
@@ -46,7 +47,8 @@ class _myDrawerState extends State<myDrawer> {
             ),
             CircleAvatar(
               radius: 80,
-              backgroundImage: NetworkImage(AvatarKeys.shyGal),
+              backgroundImage:
+                  NetworkImage("${widget.user.profilePicUrl.toString()}"),
             ),
             SizedBox(height: 20),
             Container(
@@ -57,7 +59,7 @@ class _myDrawerState extends State<myDrawer> {
               child: Column(
                 children: [
                   Text(
-                    'Ahmed Lashari',
+                    widget.user.name,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: 22,
@@ -65,7 +67,7 @@ class _myDrawerState extends State<myDrawer> {
                         color: AppColors.onSecondary),
                   ),
                   Text(
-                    'Programming',
+                    widget.user.mainSkill,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: 16,

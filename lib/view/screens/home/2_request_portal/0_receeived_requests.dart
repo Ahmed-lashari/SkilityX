@@ -24,7 +24,6 @@ class _ReceivedRequestsState extends State<ReceivedRequests> {
   Widget build(BuildContext context) {
     debugPrint('received request building');
     return CustomScaffold(
-      hPadding: 0,
       body: CustomRefresher(
           items: items,
           loadingRefreshKey: "received",

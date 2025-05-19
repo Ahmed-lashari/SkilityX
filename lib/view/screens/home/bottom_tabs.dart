@@ -25,20 +25,28 @@ class _HomeTabsState extends ConsumerState<HomeTabs> {
   final GlobalKey<CustomScaffoldState> persistentkey =
       GlobalKey<CustomScaffoldState>();
 
-  final screens = [
-    KeepAliveWrapper(child: SkillsScreen()),
-    KeepAliveWrapper(child: mySkills()),
-    KeepAliveWrapper(child: Profile()),
-  ];
+  List<Widget> screens = [];
+
+  @override
+  void initState() {
+    super.initState();
+    screens = [
+      KeepAliveWrapper(child: SkillsScreen(user: widget.user)),
+      KeepAliveWrapper(child: mySkills(user: widget.user)),
+      KeepAliveWrapper(child: Profile(user: widget.user)),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
     debugPrint('home nav bar tabs screen');
 
     return CustomScaffold(
+      hPadding: 0,
       key: persistentkey,
-      drawer: myDrawer(persistentkey: persistentkey),
+      drawer: myDrawer(persistentkey: persistentkey, user: widget.user),
       appBar: myAppBar(
+        user: widget.user,
         context: context,
         actions: [
           IconButton(

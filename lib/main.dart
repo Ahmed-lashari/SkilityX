@@ -27,8 +27,9 @@ class SkilityX extends StatefulWidget {
 class _SkilityXState extends State<SkilityX> {
   @override
   Widget build(BuildContext context) {
-    // optional but context independent
+    // for the overlay progress indicator
     return GlobalLoaderOverlay(
+      // for overlay context free notifications
       child: ToastificationWrapper(
         child: SafeArea(
           child: MaterialApp(

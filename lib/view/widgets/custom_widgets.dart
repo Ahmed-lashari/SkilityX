@@ -6,6 +6,7 @@ import 'package:skility_x/constants/app_colors.dart';
 import 'package:skility_x/constants/app_keys/hero_keys.dart';
 import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
+import 'package:skility_x/models/Users/users.dart';
 import 'package:skility_x/view/screens/home/1_skills/4_skill_details.dart';
 import 'package:skility_x/view/themes/theme_conts/typography.dart';
 import 'package:skility_x/view/ui_config/view/screens/home/1_skills/3_filter_screen.dart';
@@ -191,8 +192,8 @@ class CustomWidgets {
     );
   }
 
-  static Widget AppBarWelcom() {
+  static Widget AppBarWelcom(Users user) {
     final text = Utils.getWelcomeText();
-    return Text('$text Muhammad');
+    return Text('$text ${user.name.split(' ')[0]}');
   }
 }
