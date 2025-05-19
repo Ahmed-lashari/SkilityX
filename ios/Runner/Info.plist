@@ -46,5 +46,19 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 
+	<!-- google oAuth login -->
+	<key>CFBundleURLTypes</key>
+		<array>
+			<dict>
+				<key>CFBundleTypeRole</key>
+				<string>Editor</string>
+					<key>CFBundleURLSchemes</key>
+					<array>
+						<string>com.googleusercontent.apps.575623714443-g8nq7qdkltam551h98rru50sc8m0a2t0</string>
+				</array>
+			</dict>
+		</array>
+
+
 </dict>
 </plist>

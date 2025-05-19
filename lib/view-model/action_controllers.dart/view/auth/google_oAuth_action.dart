@@ -40,7 +40,9 @@ class GoogleOauthAction {
           // make a hive call for saving user into cache
           final isSaved = await HiveuserDataRepo.saveUserData(userWithId);
           if (isSaved) {
-            await AppNavigator.navigateTo(context, wRoute: HomeTabs());
+            await AppNavigator.navigateTo(context,
+                wRoute: HomeTabs(user: userWithId));
+            Utils.cancelLoading(context);
           } else {
             debugPrint("FALSE RETURNED WHILE SAVING USER DATA IN THE HIVE.");
           }
@@ -68,16 +70,15 @@ class GoogleOauthAction {
           await FirestoreUserDataRepo.getUserDataById(cred.user!.uid);
 
       // cache in local hive
-
       if (firebaseData != null) {
         await HiveuserDataRepo.saveUserData(firebaseData);
+        // naviagate to home
+        await AppNavigator.navigateTo(context,
+            wRoute: HomeTabs(user: firebaseData));
       } else {
         debugPrint(
             "NOTINGH TO CACHE IN HIVE COZ NULL RETURNED FROM THE FIREBASE COLL WHILE LOGGIN IN");
       }
-
-      // naviagate to home
-      await AppNavigator.navigateTo(context, wRoute: HomeTabs());
     }
 
     Utils.cancelLoading(context);
