@@ -16,8 +16,6 @@ class mySkills extends ConsumerStatefulWidget {
 }
 
 class _mySkillsState extends ConsumerState<mySkills> {
-  final receivedRequests = KeepAliveWrapper(child: ReceivedRequests());
-  final sentRequests = KeepAliveWrapper(child: SentRequests());
   @override
   Widget build(BuildContext context) {
     debugPrint('building skills offers screen');
@@ -34,6 +32,9 @@ class _mySkillsState extends ConsumerState<mySkills> {
         onPageChanged: (index) => ref
             .read(filterPageController.notifier)
             .onPageChanged(index, ref, false),
-        children: [receivedRequests, sentRequests]);
+        children: [
+          KeepAliveWrapper(child: ReceivedRequests(user: widget.user)),
+          KeepAliveWrapper(child: SentRequests(user: widget.user))
+        ]);
   }
 }

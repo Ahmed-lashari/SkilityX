@@ -2,12 +2,13 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:skility_x/models/SkillsRequests/skills_requests.dart';
 import 'package:skility_x/view-model/action_controllers.dart/view/screens/home/2_request_portal/0_request_received.dart';
 import 'package:skility_x/view-model/action_controllers.dart/view/screens/home/2_request_portal/1_request_sent.dart';
 
 class CustomRefresher extends StatefulWidget {
-  final List<String> items;
-  final Widget Function(BuildContext context, int index, String item)
+  final List<SkillsRequests> items;
+  final Widget Function(BuildContext context, int index, SkillsRequests item)
       itemBuilder;
   final String loadingRefreshKey;
 

@@ -6,7 +6,9 @@ import 'package:skility_x/models/Users/users.dart';
 import 'package:skility_x/view/screens/home/4_settings/cover_photo_setting.dart';
 import 'package:skility_x/view/themes/theme_conts/typography.dart';
 import 'package:skility_x/view/widgets/app_bar.dart';
+import 'package:skility_x/view/widgets/bottom_sheets/logout_bottom_sheet.dart';
 import 'package:skility_x/view/widgets/custom_scaffold.dart';
+import 'package:skility_x/view/widgets/custom_widgets.dart';
 import 'package:skility_x/view/widgets/image_ui.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -28,7 +30,8 @@ class SettingsScreen extends StatelessWidget {
               leadingIcon: AppImageIcons.camera,
               title: "Cover Photos"),
           _SettingsTileCard(
-              onTap: () {},
+              onTap: () => CustomWidgets.customBottomSheet(
+                  context, LogoutBottomSheet(), AppColors.secondary),
               leadingIcon: AppImageIcons.camera,
               title: "Log Out"),
         ],

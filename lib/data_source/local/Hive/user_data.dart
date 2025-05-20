@@ -21,4 +21,10 @@ class HiveUserDataService {
 
     await box.put(user.id, user);
   }
+
+  static Future<Users?> getUserData(String key) async {
+    final box = await _openBox();
+
+    return await box.get(key);
+  }
 }
