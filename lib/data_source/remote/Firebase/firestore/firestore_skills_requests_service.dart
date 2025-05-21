@@ -15,24 +15,58 @@ class FirestoreSkillsRequestService {
     await docRef.set(skillsReqWithId.toJson());
   }
 
-  static Future<List<SkillsRequests>> getAllSentRequests(String key) async {
-    final docList = await FirebaseManager.firestore
+  static Future<List<SkillsRequests>> getAllSentRequests(
+    String key, {
+    SkillsRequests? lastDocument,
+  }) async {
+    var query = FirebaseManager.firestore
         .collection(FirestoreCollectionKeys.skills_rrquests)
         .where('fromUserId', isEqualTo: key)
-        .get();
+        .orderBy('createdAt', descending: true)
+        .limit(2);
 
+    // if have a last document start after there
+    if (lastDocument != null) {
+      final lastDoc = await FirebaseManager.firestore
+          .collection(FirestoreCollectionKeys.skills_rrquests)
+          .doc(lastDocument.requestId)
+          .get();
+
+      if (lastDoc.exists) {
+        query = query.startAfterDocument(lastDoc);
+      }
+    }
+
+    final docList = await query.get();
     final data =
         docList.docs.map((map) => SkillsRequests.fromJson(map.data())).toList();
 
     return data;
   }
 
-  static Future<List<SkillsRequests>> getAllReceivedRequests(String key) async {
-    final docList = await FirebaseManager.firestore
+  static Future<List<SkillsRequests>> getAllReceivedRequests(
+    String key, {
+    SkillsRequests? lastDocument,
+  }) async {
+    var query = FirebaseManager.firestore
         .collection(FirestoreCollectionKeys.skills_rrquests)
         .where('toUserId', isEqualTo: key)
-        .get();
+        .orderBy('createdAt', descending: true)
+        .limit(2);
 
+    // if have a last document start after there
+    if (lastDocument != null) {
+      final lastDoc = await FirebaseManager.firestore
+          .collection(FirestoreCollectionKeys.skills_rrquests)
+          .doc(lastDocument.requestId)
+          .get();
+
+      if (lastDoc.exists) {
+        query = query.startAfterDocument(lastDoc);
+      }
+    }
+
+    final docList = await query.get();
     final data =
         docList.docs.map((map) => SkillsRequests.fromJson(map.data())).toList();
 

@@ -17,8 +17,8 @@ class FirestoreSkillsOfferedService {
 
   static Future<List<SkillsOffered>> getFilteredCoursesList(String key) async {
     final docList = await FirebaseManager.firestore
-        .collection(FirestoreCollectionKeys.skills_rrquests)
-        .where('toUserId', isEqualTo: key)
+        .collection(FirestoreCollectionKeys.skills_offered)
+        .where('category', isEqualTo: key)
         .get();
 
     final data =

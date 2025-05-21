@@ -5,23 +5,25 @@ import 'package:skility_x/view-model/data_providers/view/screen/home/2_request_p
 import 'package:skility_x/view/ui_config/view/screens/home/1_skills/3_filter_screen.dart';
 import 'package:skility_x/view/widgets/custom_progress_indicator.dart';
 import 'package:skility_x/view/widgets/custom_scaffold.dart';
-import 'package:skility_x/view/widgets/request_sent_card.dart';
+import 'package:skility_x/view/widgets/request_card_ui.dart';
 import 'package:skility_x/view/widgets/smart_refresher.dart';
 
-class SentRequests extends ConsumerStatefulWidget {
+class SentRequestsWithRefresher extends ConsumerStatefulWidget {
   final Users user;
-  const SentRequests({super.key, required this.user});
+  const SentRequestsWithRefresher({super.key, required this.user});
 
   @override
-  ConsumerState<SentRequests> createState() => _ReceivedRequestsState();
+  ConsumerState<SentRequestsWithRefresher> createState() =>
+      _SentRequestsWithRefresherState();
 }
 
-class _ReceivedRequestsState extends ConsumerState<SentRequests> {
+class _SentRequestsWithRefresherState
+    extends ConsumerState<SentRequestsWithRefresher> {
   List<FilterColorModel> isList = [];
+
   @override
   void initState() {
     super.initState();
-
     isList = FilterScreenConfig.getColorsLists();
   }
 
@@ -29,29 +31,33 @@ class _ReceivedRequestsState extends ConsumerState<SentRequests> {
   Widget build(BuildContext context) {
     debugPrint(widget.user.id);
     debugPrint('sent request building');
-    final data = ref.watch(sentRequestProvider(widget.user.id));
-    return CustomScaffold(
-        body: data.when(
-      loading: () => Center(child: GradientCircularProgress()),
-      error: (error, stackTrace) => Center(child: Text('Error: $error')),
-      data: (data) {
-        if (data.isEmpty) {
-          return Center(child: Text('No Sent Requests'));
-        }
-        return CustomRefresher(
-            items: data,
-            loadingRefreshKey: "sent",
-            itemBuilder: (context, index, it) {
-              final i = FilterScreenConfig.getColorIndex(index, isList.length);
 
-              final colorScheme = isList[i];
-              return RequestSentCard(
-                  data: data[index],
-                  colorModel: colorScheme,
-                  index: index,
-                  showLearningButton: true);
-            });
-      },
-    ));
+    final paginationState =
+        ref.watch(sentRequestsPaginationProvider(widget.user.id));
+    final paginationNotifier =
+        ref.read(sentRequestsPaginationProvider(widget.user.id).notifier);
+
+    return CustomScaffold(
+      body: paginationState.items.isEmpty && paginationState.isLoading
+          ? Center(child: GradientCircularProgress())
+          : paginationState.items.isEmpty && !paginationState.isLoading
+              ? Center(child: Text('No Sent Requests'))
+              : CustomRefresherWithPagination(
+                  state: paginationState,
+                  onLoadMore: () => paginationNotifier.loadMore(),
+                  itemBuilder: (context, index, item) {
+                    final i =
+                        FilterScreenConfig.getColorIndex(index, isList.length);
+                    final colorScheme = isList[i];
+
+                    return RequestCard(
+                      data: item,
+                      colorModel: colorScheme,
+                      index: index,
+                      showLearningButton: true,
+                    );
+                  },
+                ),
+    );
   }
 }

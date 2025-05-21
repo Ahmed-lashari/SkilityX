@@ -33,8 +33,9 @@ class _mySkillsState extends ConsumerState<mySkills> {
             .read(filterPageController.notifier)
             .onPageChanged(index, ref, false),
         children: [
-          KeepAliveWrapper(child: ReceivedRequests(user: widget.user)),
-          KeepAliveWrapper(child: SentRequests(user: widget.user))
+          KeepAliveWrapper(
+              child: ReceivedRequestsWithRefresher(user: widget.user)),
+          KeepAliveWrapper(child: SentRequestsWithRefresher(user: widget.user))
         ]);
   }
 }

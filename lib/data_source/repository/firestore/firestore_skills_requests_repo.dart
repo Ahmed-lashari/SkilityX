@@ -13,18 +13,30 @@ class FirestoreSkillsRequestsRepo {
     }
   }
 
-  static Future<List<SkillsRequests>> getAllSentRequests(String key) async {
+  static Future<List<SkillsRequests>> getAllSentRequests(
+    String key, {
+    SkillsRequests? lastDocument,
+  }) async {
     try {
-      return await FirestoreSkillsRequestService.getAllSentRequests(key);
+      return await FirestoreSkillsRequestService.getAllSentRequests(
+        key,
+        lastDocument: lastDocument,
+      );
     } catch (e, h) {
       Utils.handleError(e.toString(), h);
       return [];
     }
   }
 
-  static Future<List<SkillsRequests>> getAllReceivedRequests(String key) async {
+  static Future<List<SkillsRequests>> getAllReceivedRequests(
+    String key, {
+    SkillsRequests? lastDocument,
+  }) async {
     try {
-      return await FirestoreSkillsRequestService.getAllReceivedRequests(key);
+      return await FirestoreSkillsRequestService.getAllReceivedRequests(
+        key,
+        lastDocument: lastDocument,
+      );
     } catch (e, h) {
       Utils.handleError(e.toString(), h);
       return [];

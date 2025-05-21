@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:skility_x/constants/app-icons.dart';
 import 'package:skility_x/core/utils.dart/time_formats.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
+import 'package:skility_x/data_source/remote/Firebase/firebase_manager.dart';
 import 'package:skility_x/models/SkillsRequests/skills_requests.dart';
 import 'package:skility_x/view/ui_config/view/screens/home/1_skills/3_filter_screen.dart';
+import 'package:skility_x/view/widgets/bottom_sheets/received_request_status.dart';
 import 'package:skility_x/view/widgets/bottom_sheets/sent_request_deletion.dart';
 import 'package:skility_x/view/widgets/custom_widgets.dart';
 import 'package:skility_x/view/widgets/image_ui.dart';
 
-class RequestSentCard extends StatelessWidget {
+class RequestCard extends StatelessWidget {
   final FilterColorModel colorModel;
   final SkillsRequests data;
   final int index;
   final bool showLearningButton;
   final Color? navIconColor;
-  const RequestSentCard(
+  const RequestCard(
       {required this.colorModel,
       required this.index,
       required this.data,
@@ -208,28 +211,39 @@ class RequestSentCard extends StatelessWidget {
               ],
             ),
           ),
-          Material(
-            type: MaterialType.transparency,
-            child: InkWell(
-              onTap: () => CustomWidgets.customBottomSheet(
-                  context,
-                  BottomSheetSentReqDel(colorModel: colorModel),
-                  colorModel.boxColor),
-              borderRadius: BorderRadius.circular(16),
-              splashColor: colorModel.textColor,
-              child: Ink(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
+          (data.fromUserId != FirebaseManager.user?.uid)
+              ? IconButton(
+                  onPressed: () => CustomWidgets.customBottomSheet(
+                      context,
+                      BottomSheetReceivedReq(colorModel: colorModel),
+                      colorModel.boxColor),
+                  icon: CustomIcon(
+                    icon: AppImageIcons.rightarrow,
+                    color: colorModel.textColor,
+                    iconSize: 23,
+                  ))
+              : Material(
+                  type: MaterialType.transparency,
+                  child: InkWell(
+                    onTap: () => CustomWidgets.customBottomSheet(
+                        context,
+                        BottomSheetSentReqDel(colorModel: colorModel),
+                        colorModel.boxColor),
                     borderRadius: BorderRadius.circular(16),
-                    color: colorModel.boxColor,
+                    splashColor: colorModel.textColor,
+                    child: Ink(
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: colorModel.boxColor,
+                        ),
+                        child: Center(
+                            child: Text(
+                          'Delete Request',
+                          style: TextStyle(color: colorModel.textColor),
+                        ))),
                   ),
-                  child: Center(
-                      child: Text(
-                    'Delete Request',
-                    style: TextStyle(color: colorModel.textColor),
-                  ))),
-            ),
-          )
+                )
         ],
       ),
     );
