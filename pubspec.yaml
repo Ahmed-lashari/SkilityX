@@ -10,76 +10,48 @@ environment:
 
 dependencies:
   flutter:
-    sdk: flutter
+    sdk: flutter  
+
+
+
+  # ===================================== DEBUGGIN & PROVACY =====================================
+  json_annotation: ^4.9.0                         # json model 
+  flutter_dotenv: ^5.2.1                          # handles the environment variables
   
-  # overlay screen loading
-  loader_overlay: ^5.0.0
-
- 
-  
-
-  dio: ^5.8.0+1
-  # http: ^1.4.0
-  # googleapis_auth: ^2.0.0
-  
-  # botto sheet
-  modal_bottom_sheet: ^3.0.0
-  
-  # for loading screen ui
-  pull_to_refresh: ^2.0.0
-
-  # googlle maps
-  # google_maps_flutter: ^2.12.1 # requires ios 14 min
-
-  
-
-  # customized toasts
-  toastification: ^3.0.2
-
-
-  # caches image
-  cached_network_image: ^3.4.1
-
-  # for icon changes
-  flutter_launcher_icons: ^0.14.3
-
-  # icons
-  material_design_icons_flutter: ^7.0.7296
-  font_awesome_flutter: ^10.8.0
-
-  #local db
-  hive: ^2.2.3
-  hive_flutter: ^1.1.0
-
-  # helps in getting hive path
-  path_provider: ^2.1.5
-
-  # json model annotation
-  json_annotation: ^4.9.0
-
-  # ios icons
-  cupertino_icons: ^1.0.8
-
-  # state management
-  riverpod: ^2.6.1
-  flutter_riverpod: ^2.6.1
-
-  # extra layer for the variables security
-  flutter_dotenv: ^5.2.1
-
-
-  # ======================================== Testing ==========================================
-  firebase_auth_mocks: ^0.14.1      # auth methods checking
+  # ======================================== UI ==========================================
+  toastification: ^3.0.2                          # overlay popup messages
+  cached_network_image: ^3.4.1                    # caches the network images
+  material_design_icons_flutter: ^7.0.7296        # icons
+  font_awesome_flutter: ^10.8.0                   # icons
+  flutter_launcher_icons: ^0.14.3                 # app logo
+  pull_to_refresh: ^2.0.0                         # pagination ui
+  modal_bottom_sheet: ^3.0.0                      # bottom sheet 
+  loader_overlay: ^5.0.0                          # overlay circular progress bar
 
 
   # ======================================== FIREBASE ==========================================
-  firebase_core: ^3.13.0          # firebase setup
-  firebase_crashlytics: ^4.3.5    # crash catch
-  cloud_firestore: ^5.6.7         # firestore
-  google_sign_in: ^6.3.0          # google auth
-  flutter_web_auth_2: ^4.1.0      # github auth
-  firebase_messaging: ^15.2.5     # for notifications
+  firebase_core: ^3.13.0                          # firebase setup
+  firebase_crashlytics: ^4.3.5                    # crash catch
+  cloud_firestore: ^5.6.7                         # firestore
+  google_sign_in: ^6.3.0                          # google auth
+  flutter_web_auth_2: ^4.1.0                      # github auth
+  firebase_messaging: ^15.2.5                     # for notifications
+  dio: ^5.8.0+1                                   # supports in notifications
+  firebase_auth_mocks: ^0.14.1                    # testing
+  # http: ^1.4.0                                  # not currently using
+  # googleapis_auth: ^2.0.0                       # not currently using
+  # googlle maps                                  # not currently integrated
+  # google_maps_flutter: ^2.12.1                  # requires ios 14 min
 
+
+  # ======================================== HIVE ==========================================
+  hive: ^2.2.3                                    # local db
+  hive_flutter: ^1.1.0                            # hive wrapper
+  path_provider: ^2.1.5                           # handles permissions
+  
+  # ======================================== STATE MANAGEMENT ==========================================
+  riverpod: ^2.6.1                                # state management
+  flutter_riverpod: ^2.6.1                        # wrapper
 
 dev_dependencies:
   flutter_test:
