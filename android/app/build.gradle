@@ -17,6 +17,10 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+
+        // flutter_local_notification settings
+        coreLibraryDesugaringEnabled true
+
     }
 
     kotlinOptions {
@@ -55,4 +59,8 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation("com.google.firebase:firebase-crashlytics")
     // implementation("com.google.firebase:firebase-analytics")
+
+    // flutter_local_notification setting
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
+
 }

@@ -36,12 +36,14 @@ dependencies:
   google_sign_in: ^6.3.0                          # google auth
   flutter_web_auth_2: ^4.1.0                      # github auth
   firebase_messaging: ^15.2.5                     # for notifications
+  flutter_local_notifications: ^19.2.1            # notification ui package
   dio: ^5.8.0+1                                   # supports in notifications
   firebase_auth_mocks: ^0.14.1                    # testing
   # http: ^1.4.0                                  # not currently using
   # googleapis_auth: ^2.0.0                       # not currently using
   # googlle maps                                  # not currently integrated
   # google_maps_flutter: ^2.12.1                  # requires ios 14 min
+  app_settings: ^6.1.1                            # wifi, notification and other permissions
 
 
   # ======================================== HIVE ==========================================

@@ -18,6 +18,13 @@ class FirestoreUserDataService {
     return userWithId;
   }
 
+  static Future<void> updateUserData(Users user) async {
+    await FirebaseManager.firestore
+        .collection(FirestoreCollectionKeys.users)
+        .doc(user.id)
+        .update(user.toJson());
+  }
+
   static Future<Users?> getUserDataById(String userId) async {
     final docRef = FirebaseManager.firestore
         .collection(FirestoreCollectionKeys.users)

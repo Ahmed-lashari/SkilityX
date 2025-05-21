@@ -5,6 +5,7 @@ import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
 import 'package:skility_x/core/utils.dart/validators.dart';
 import 'package:skility_x/data_source/repository/auth/google_oAuth/google_oauth_repo.dart';
+import 'package:skility_x/data_source/repository/cloud_messaging/notigication_repo.dart';
 import 'package:skility_x/data_source/repository/firestore/firestore_user_data_repo.dart';
 import 'package:skility_x/data_source/repository/hive/hive_user_data_repo.dart';
 import 'package:skility_x/models/Users/users.dart';
@@ -66,17 +67,26 @@ class GoogleOauthAction {
 
     if (isAuthenticated && cred != null) {
       // get daat from firebase
-      final firebaseData =
+      Users? firebaseData =
           await FirestoreUserDataRepo.getUserDataById(cred.user!.uid);
 
       // cache in local hive
       if (firebaseData != null) {
-        await HiveuserDataRepo.saveUserData(firebaseData, ref);
-        // naviagate to home
-        Utils.cancelLoading(context);
+        final updatedDoc = await firebaseData.copyWith(
+            fcmToken: await NotificationRepo.getFcmToken());
 
-        await AppNavigator.navigateTo(context,
-            wRoute: HomeTabs(user: firebaseData));
+        // update data in firestore
+        final isUpdated =
+            await FirestoreUserDataRepo.updateUserData(updatedDoc);
+
+        if (isUpdated) {
+          await HiveuserDataRepo.saveUserData(firebaseData, ref);
+          // naviagate to home
+          Utils.cancelLoading(context);
+
+          await AppNavigator.navigateTo(context,
+              wRoute: HomeTabs(user: firebaseData));
+        }
       } else {
         debugPrint(
             "NOTINGH TO CACHE IN HIVE COZ NULL RETURNED FROM THE FIREBASE COLL WHILE LOGGIN IN");
