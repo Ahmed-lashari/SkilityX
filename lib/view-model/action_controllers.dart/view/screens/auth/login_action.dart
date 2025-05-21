@@ -38,8 +38,10 @@ class LoginAction {
           final isCached = await HiveuserDataRepo.saveUserData(data, ref);
           if (isCached) {
             Utils.cancelLoading(context);
-            await AppNavigator.startAsInitial(context,
+            AppNavigator.startAsInitial(context,
                 widgetRoute: HomeTabs(user: data));
+          } else {
+            Utils.cancelLoading(context);
           }
         }
       }

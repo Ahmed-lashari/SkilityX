@@ -73,6 +73,8 @@ class GoogleOauthAction {
       if (firebaseData != null) {
         await HiveuserDataRepo.saveUserData(firebaseData, ref);
         // naviagate to home
+        Utils.cancelLoading(context);
+
         await AppNavigator.navigateTo(context,
             wRoute: HomeTabs(user: firebaseData));
       } else {
