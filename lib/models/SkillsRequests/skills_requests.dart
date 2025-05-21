@@ -34,24 +34,34 @@ class SkillsRequests {
   final String fcmToken;
   @HiveField(13)
   final String senderPicUrl;
+  @HiveField(14)
+  final String receiverPicUrl;
+  @HiveField(15)
+  final String courseDuration;
+  @HiveField(16)
+  final String courseLessons;
 
-  const SkillsRequests(
-      {required this.requestId,
-      required this.fromUserId,
-      required this.toUserId,
-      required this.skillsOffered,
-      required this.message,
-      required this.status,
-      required this.createdAt,
-      required this.senderName,
-      required this.receiverName,
-      required this.senderMainSkill,
-      required this.senderContactNumber,
-      required this.fcmToken,
-      required this.senderPicUrl,
-      required this.receiverMainName});
+  const SkillsRequests({
+    required this.requestId,
+    required this.fromUserId,
+    required this.toUserId,
+    required this.skillsOffered,
+    required this.message,
+    required this.status,
+    required this.createdAt,
+    required this.senderName,
+    required this.receiverName,
+    required this.senderMainSkill,
+    required this.senderContactNumber,
+    required this.fcmToken,
+    required this.senderPicUrl,
+    required this.receiverMainName,
+    required this.courseDuration,
+    required this.courseLessons,
+    required this.receiverPicUrl,
+  });
 
-  SkillsRequests copyWith(
+  SkillsRequests copyWith({
     final String? requestId,
     final String? fromUserId,
     final String? toUserId,
@@ -66,7 +76,10 @@ class SkillsRequests {
     final String? senderContactNumber,
     final String? fcmToken,
     final String? senderPicUrl,
-  ) {
+    final String? receiverPicUrl,
+    final String? courseDuration,
+    final String? courseLessons,
+  }) {
     return SkillsRequests(
         requestId: requestId ?? this.requestId,
         fromUserId: fromUserId ?? this.fromUserId,
@@ -81,6 +94,9 @@ class SkillsRequests {
         senderContactNumber: senderContactNumber ?? this.senderContactNumber,
         fcmToken: fcmToken ?? this.fcmToken,
         senderPicUrl: senderPicUrl ?? this.senderPicUrl,
+        receiverPicUrl: receiverPicUrl ?? this.receiverPicUrl,
+        courseDuration: courseDuration ?? this.courseDuration,
+        courseLessons: courseLessons ?? this.courseLessons,
         receiverMainName: receiverMainName ?? this.receiverMainName);
   }
 

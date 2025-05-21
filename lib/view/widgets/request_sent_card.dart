@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:skility_x/constants/app_keys/image_keys.dart';
+import 'package:skility_x/core/utils.dart/time_formats.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
+import 'package:skility_x/models/SkillsRequests/skills_requests.dart';
 import 'package:skility_x/view/ui_config/view/screens/home/1_skills/3_filter_screen.dart';
 import 'package:skility_x/view/widgets/bottom_sheets/sent_request_deletion.dart';
 import 'package:skility_x/view/widgets/custom_widgets.dart';
@@ -8,12 +9,14 @@ import 'package:skility_x/view/widgets/image_ui.dart';
 
 class RequestSentCard extends StatelessWidget {
   final FilterColorModel colorModel;
+  final SkillsRequests data;
   final int index;
   final bool showLearningButton;
   final Color? navIconColor;
   const RequestSentCard(
       {required this.colorModel,
       required this.index,
+      required this.data,
       this.navIconColor,
       this.showLearningButton = false});
 
@@ -33,32 +36,32 @@ class RequestSentCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // course description
-            _buildDescription(),
+            _buildDescription(data),
 
             // course details + request status
-            _buildDetails(),
+            _buildDetails(data),
 
             // user profile, name and navigation
-            _builduserInfo(context)
+            _builduserInfo(context, data)
           ],
         ));
   }
 
-  Widget _buildDetails() {
+  Widget _buildDetails(SkillsRequests data) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // course details
-        _buildCourseDetails(),
+        _buildCourseDetails(data),
 
         // request status and details
-        _buildRequestStatus(),
+        _buildRequestStatus(data),
       ],
     );
   }
 
-  Widget _buildCourseDetails() {
+  Widget _buildCourseDetails(SkillsRequests data) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -67,7 +70,7 @@ class RequestSentCard extends StatelessWidget {
           spacing: 16,
           children: [
             Text(
-              '30',
+              data.courseDuration,
               maxLines: 4,
               textAlign: TextAlign.justify,
               style: TextStyle(
@@ -93,7 +96,7 @@ class RequestSentCard extends StatelessWidget {
           spacing: 16,
           children: [
             Text(
-              '30',
+              data.courseLessons,
               maxLines: 4,
               textAlign: TextAlign.justify,
               style: TextStyle(
@@ -117,7 +120,7 @@ class RequestSentCard extends StatelessWidget {
     );
   }
 
-  Widget _buildRequestStatus() {
+  Widget _buildRequestStatus(SkillsRequests data) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
@@ -135,7 +138,7 @@ class RequestSentCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis),
             ),
             Text(
-              'Pending',
+              data.status,
               maxLines: 4,
               textAlign: TextAlign.justify,
               style: TextStyle(
@@ -161,7 +164,7 @@ class RequestSentCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis),
             ),
             Text(
-              '12:31 pm',
+              TimeFormater.formatTimestamp(data.createdAt),
               maxLines: 4,
               textAlign: TextAlign.justify,
               style: TextStyle(
@@ -176,7 +179,7 @@ class RequestSentCard extends StatelessWidget {
     );
   }
 
-  Widget _builduserInfo(BuildContext context) {
+  Widget _builduserInfo(BuildContext context, SkillsRequests data) {
     return Container(
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -191,11 +194,11 @@ class RequestSentCard extends StatelessWidget {
               children: [
                 ProfilePicture(
                   imageSize: 50,
-                  url: AvatarKeys.cryShaggy,
+                  url: "${data.receiverPicUrl}",
                 ),
                 Expanded(
                   child: Text(
-                    'Fatima Noman',
+                    data.receiverName,
                     style: TextStyle(
                         color: colorModel.textColor,
                         fontSize: 20,
@@ -232,13 +235,13 @@ class RequestSentCard extends StatelessWidget {
     );
   }
 
-  Widget _buildDescription() {
+  Widget _buildDescription(SkillsRequests data) {
     return Column(
       spacing: 10,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Artificial intelligence',
+          data.skillsOffered,
           style: TextStyle(
               color: colorModel.textColor,
               fontSize: 18,
@@ -246,7 +249,7 @@ class RequestSentCard extends StatelessWidget {
               overflow: TextOverflow.ellipsis),
         ),
         Text(
-          'I am an Artificial Inteligence Engineer and willing to help beginners or fresh developer into building Ai models. Feel free to reach me out using the provided deep links.',
+          data.message,
           maxLines: 4,
           textAlign: TextAlign.justify,
           style: TextStyle(

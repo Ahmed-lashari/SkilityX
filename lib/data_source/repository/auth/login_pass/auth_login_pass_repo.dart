@@ -53,10 +53,12 @@ class AuthLoginPassRepo {
   }
 
   // create account + handle errors
-  static Future<bool> login(String email, String password) async {
+  static Future<(UserCredential?, bool)> login(
+      String email, String password) async {
     try {
-      await AuthLoginPassService.loginuser(email.trim(), password.trim());
-      return true;
+      final cred =
+          await AuthLoginPassService.loginuser(email.trim(), password.trim());
+      return (cred, true);
     } on FirebaseAuthException catch (e, s) {
       final type = ToastificationType.error;
       switch (e.code) {
@@ -93,14 +95,14 @@ class AuthLoginPassRepo {
               description: 'Please check your internet connection.',
               type: type);
       }
-      return false;
+      return (null, false);
     } catch (e, s) {
       Utils.handleError('Unexpected error during login: $e', s);
       Utils.toastMsg(
           title: "Uncaught Error!",
           description: e.toString(),
           type: ToastificationType.error);
-      return false;
+      return (null, false);
     }
   }
 }

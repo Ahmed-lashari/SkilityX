@@ -31,13 +31,16 @@ class SkillsRequestsAdapter extends TypeAdapter<SkillsRequests> {
       fcmToken: fields[12] as String,
       senderPicUrl: fields[13] as String,
       receiverMainName: fields[10] as String,
+      courseDuration: fields[15] as String,
+      courseLessons: fields[16] as String,
+      receiverPicUrl: fields[14] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, SkillsRequests obj) {
     writer
-      ..writeByte(14)
+      ..writeByte(17)
       ..writeByte(0)
       ..write(obj.requestId)
       ..writeByte(1)
@@ -65,7 +68,13 @@ class SkillsRequestsAdapter extends TypeAdapter<SkillsRequests> {
       ..writeByte(12)
       ..write(obj.fcmToken)
       ..writeByte(13)
-      ..write(obj.senderPicUrl);
+      ..write(obj.senderPicUrl)
+      ..writeByte(14)
+      ..write(obj.receiverPicUrl)
+      ..writeByte(15)
+      ..write(obj.courseDuration)
+      ..writeByte(16)
+      ..write(obj.courseLessons);
   }
 
   @override
@@ -99,6 +108,9 @@ SkillsRequests _$SkillsRequestsFromJson(Map<String, dynamic> json) =>
       fcmToken: json['fcmToken'] as String,
       senderPicUrl: json['senderPicUrl'] as String,
       receiverMainName: json['receiverMainName'] as String,
+      courseDuration: json['courseDuration'] as String,
+      courseLessons: json['courseLessons'] as String,
+      receiverPicUrl: json['receiverPicUrl'] as String,
     );
 
 Map<String, dynamic> _$SkillsRequestsToJson(SkillsRequests instance) =>
@@ -117,4 +129,7 @@ Map<String, dynamic> _$SkillsRequestsToJson(SkillsRequests instance) =>
       'senderContactNumber': instance.senderContactNumber,
       'fcmToken': instance.fcmToken,
       'senderPicUrl': instance.senderPicUrl,
+      'receiverPicUrl': instance.receiverPicUrl,
+      'courseDuration': instance.courseDuration,
+      'courseLessons': instance.courseLessons,
     };

@@ -1,3 +1,5 @@
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+
 class RequestsReceivedAction {
   static Future<void> onLoading(refreshController) async {
     // monitor network fetch
@@ -8,10 +10,9 @@ class RequestsReceivedAction {
     refreshController.loadComplete();
   }
 
-  static Future<void> onRefresh(refreshController) async {
-    // monitor network fetch
+  static Future<void> onRefresh(RefreshController refreshController) async {
     await Future.delayed(Duration(milliseconds: 1000));
-    // // refreshFailed()
+
     refreshController.refreshToIdle();
   }
 }

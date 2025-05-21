@@ -51,7 +51,7 @@ class SignupAction {
           if (userWithId == null) {
             throw "UserWithId returned null";
           }
-          final isSaved = await HiveuserDataRepo.saveUserData(userWithId);
+          final isSaved = await HiveuserDataRepo.saveUserData(userWithId, ref);
           if (isSaved) {
             await AppNavigator.navigateTo(context,
                 wRoute: HomeTabs(user: userWithId));

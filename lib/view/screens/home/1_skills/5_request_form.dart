@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:skility_x/constants/app-icons.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skility_x/constants/app_keys/hero_keys.dart';
 import 'package:skility_x/constants/app_keys/text_controller_keys.dart';
-import 'package:skility_x/core/utils.dart/validators.dart';
 import 'package:skility_x/models/SkillsOffered/skills_offered.dart';
+import 'package:skility_x/view-model/action_controllers.dart/view/screens/home/1_skills/1_skills_offered_action.dart';
 import 'package:skility_x/view/ui_config/view/screens/home/1_skills/3_filter_screen.dart';
 import 'package:skility_x/view/widgets/app_textfield.dart';
 import 'package:skility_x/view/widgets/custom_scaffold.dart';
 import 'package:skility_x/view/widgets/custom_widgets.dart';
 import 'package:skility_x/view/widgets/skills_banner.dart';
 
-class SkillRequestForm extends StatefulWidget {
+class SkillRequestForm extends ConsumerStatefulWidget {
   final int index;
   final SkillsOffered data;
   final FilterColorModel color;
@@ -21,10 +21,10 @@ class SkillRequestForm extends StatefulWidget {
       required this.color});
 
   @override
-  State<SkillRequestForm> createState() => Skill_RequestFormState();
+  ConsumerState<SkillRequestForm> createState() => Skill_RequestFormState();
 }
 
-class Skill_RequestFormState extends State<SkillRequestForm> {
+class Skill_RequestFormState extends ConsumerState<SkillRequestForm> {
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,8 @@ class Skill_RequestFormState extends State<SkillRequestForm> {
                 label: "Submit Request",
                 backgroundColor: widget.color.boxColor,
                 textColor: widget.color.textColor,
-                onPressed: () => Validators.validateForm(formKey)),
+                onPressed: () => SkillsRequestdAction.sendRequest(
+                    context, ref, formKey, widget.data)),
           )
         ],
       ),
@@ -58,21 +59,10 @@ class Skill_RequestFormState extends State<SkillRequestForm> {
   Widget _buildForm() {
     return Form(
       key: formKey,
-      child: Column(
-        spacing: 16,
-        children: [
-          myTextField(
-            hintText: 'Name',
-            controllerKey: TextControllerKeys.nameKey,
-            prefixIcon: AppStaticIcons.person,
-            prefixIconColor: widget.color.textColor,
-          ),
-          myTextField(
-              maxLines: 5,
-              hintText: 'Short Description',
-              controllerKey: TextControllerKeys.description),
-        ],
-      ),
+      child: myTextField(
+          maxLines: 5,
+          hintText: 'Short Description',
+          controllerKey: TextControllerKeys.description),
     );
   }
 }

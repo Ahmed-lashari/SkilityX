@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:skility_x/constants/app-icons.dart';
 import 'package:skility_x/constants/app_keys/image_keys.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
+import 'package:skility_x/models/SkillsRequests/skills_requests.dart';
 import 'package:skility_x/view/ui_config/view/screens/home/1_skills/3_filter_screen.dart';
 import 'package:skility_x/view/widgets/bottom_sheets/received_request_status.dart';
 import 'package:skility_x/view/widgets/custom_widgets.dart';
@@ -9,12 +10,14 @@ import 'package:skility_x/view/widgets/image_ui.dart';
 
 class RequestReceivedCard extends StatelessWidget {
   final FilterColorModel colorModel;
+  final SkillsRequests data;
   final int index;
   final bool showLearningButton;
   final Color? navIconColor;
   const RequestReceivedCard(
       {required this.colorModel,
       required this.index,
+      required this.data,
       this.navIconColor,
       this.showLearningButton = false});
 

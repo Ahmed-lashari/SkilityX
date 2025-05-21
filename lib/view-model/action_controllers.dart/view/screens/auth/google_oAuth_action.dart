@@ -38,7 +38,7 @@ class GoogleOauthAction {
           }
 
           // make a hive call for saving user into cache
-          final isSaved = await HiveuserDataRepo.saveUserData(userWithId);
+          final isSaved = await HiveuserDataRepo.saveUserData(userWithId, ref);
           if (isSaved) {
             await AppNavigator.navigateTo(context,
                 wRoute: HomeTabs(user: userWithId));
@@ -71,7 +71,7 @@ class GoogleOauthAction {
 
       // cache in local hive
       if (firebaseData != null) {
-        await HiveuserDataRepo.saveUserData(firebaseData);
+        await HiveuserDataRepo.saveUserData(firebaseData, ref);
         // naviagate to home
         await AppNavigator.navigateTo(context,
             wRoute: HomeTabs(user: firebaseData));
