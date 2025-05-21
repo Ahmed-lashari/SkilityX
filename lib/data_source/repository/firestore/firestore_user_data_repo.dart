@@ -16,6 +16,18 @@ class FirestoreUserDataRepo {
     }
   }
 
+  static Future<bool> updateUserData(Users user) async {
+    try {
+      await FirestoreUserDataService.updateUserData(user);
+
+      return true;
+    } catch (e, h) {
+      Utils.handleError(e.toString(), h);
+
+      return false;
+    }
+  }
+
   static Future<Users?> getUserDataById(String userId) async {
     Users? user;
     try {

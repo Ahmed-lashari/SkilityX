@@ -25,6 +25,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
   final instance2 = KeepAliveWrapper(child: SignUpUi());
 
   final toggleButton = ToggleFilterButton();
+
   @override
   Widget build(BuildContext context) {
     debugPrint(
