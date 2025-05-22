@@ -14,7 +14,7 @@
 - 🧠 Skill-based **user onboarding**
 - 🤝 Send and receive **requests** to connect with other users
 - 🗂️ Clean MVVM + Riverpod state management architecture
-- ☁️ Firebase integration -> Firestore + Auth + Cloud Messaging [Planned]
+- ☁️ Firebase integration -> Firestore + Auth + Cloud Messaging + Crashlytics [Planned]
 - 💬 Contact sharing after request acceptance
 - ✨ Beautiful and intuitive UI for both **skill seekers** and **skill sharers**.
 
@@ -88,13 +88,7 @@
 
 The current version is a **Flutter UI + Firebase integrated**, but to make SkilityX a scalable and production-ready app, the following enhancements are **planned**:
 
-* 🔐 Full backend authentication:
-
-  * Email/Password Login
-  * OAuth via Google & GitHub
-* 🔄 Scalable Backend Service
-* 🔔 Push Notifications for request updates status
-* 💾 Firestore Rules
+* 🔔 Push Notifications (for iOS)
 * 🎯 Backend role-based access and security
 
 ---
@@ -111,6 +105,6 @@ SkilityX connects **skill seekers** with **skill sharers** in a community built 
 
 
 
-> Made with 💙 using Flutter by **Muhammad Ahmed Lasahri**.
+> Made with 💙 using Flutter and Firebase by **Muhammad Ahmed Lasahri**.
 
 
