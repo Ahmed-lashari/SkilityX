@@ -53,7 +53,6 @@ class InitDependencies {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-    // handle background message logic here
   }
 
   static void _initCrashlatics() {

@@ -58,8 +58,10 @@ class _SkillsScreenState extends State<SkillsScreen> {
               style: TextStyle(fontSize: 20),
             ),
             GestureDetector(
-              onTap: () => AppNavigator.navigateTo(context,
-                  sRoute: RouteEnum.filterMenu.path),
+              onTap: () async {
+                AppNavigator.navigateTo(context,
+                    sRoute: RouteEnum.filterMenu.path);
+              },
               child: Text("View All",
                   style: TextStyle(
                       fontSize: 12,

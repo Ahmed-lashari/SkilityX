@@ -39,8 +39,8 @@ dependencies:
   flutter_local_notifications: ^19.2.1            # notification ui package
   dio: ^5.8.0+1                                   # supports in notifications
   firebase_auth_mocks: ^0.14.1                    # testing
+  googleapis_auth: ^2.0.0                         # gets firebase service key for messaging
   # http: ^1.4.0                                  # not currently using
-  # googleapis_auth: ^2.0.0                       # not currently using
   # googlle maps                                  # not currently integrated
   # google_maps_flutter: ^2.12.1                  # requires ios 14 min
   app_settings: ^6.1.1                            # wifi, notification and other permissions
@@ -111,7 +111,15 @@ flutter:
 
     # other icons
     - assets/
+    # firebase messaging key path
+    - assets/secure/skilityx-22a24-firebase-adminsdk-fbsvc-b246e3ee0e.json
+    
+
+
+    
   #   - images/a_dot_ham.jpeg
+
+
 
   fonts:
     - family: ScotishBold
