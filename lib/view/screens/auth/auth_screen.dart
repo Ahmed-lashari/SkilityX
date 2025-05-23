@@ -41,7 +41,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
     return Expanded(
       flex: 3,
       child: Container(
-        padding: EdgeInsets.all(10),
+        // padding: EdgeInsets.all(10),
         child: Column(
           spacing: 16,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

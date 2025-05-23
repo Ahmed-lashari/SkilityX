@@ -37,16 +37,18 @@ class SkillDetailsScreen extends StatelessWidget {
               ),
             ),
           )),
-      body: Column(
-        spacing: 16,
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox.shrink(),
-          _buildProfilePic(index, data.uploaderPicUrl),
-          _buildTextDetails(context, index, data, color),
-          _buildNavigationButton(context, data),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          spacing: 16,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox.shrink(),
+            _buildProfilePic(index, data.uploaderPicUrl),
+            _buildTextDetails(context, index, data, color),
+            _buildNavigationButton(context, data),
+          ],
+        ),
       ),
     );
   }

@@ -5,6 +5,7 @@ import 'package:skility_x/core/config/dep_injection/user_model.dart';
 import 'package:skility_x/core/config/route_config.dart';
 import 'package:skility_x/core/utils.dart/utils.dart';
 import 'package:skility_x/core/utils.dart/validators.dart';
+import 'package:skility_x/data_source/remote/Firebase/cloud_messaging/send_notification_service.dart';
 import 'package:skility_x/data_source/repository/firestore/firestore_skills_requests_repo.dart';
 import 'package:skility_x/models/SkillsOffered/skills_offered.dart';
 import 'package:skility_x/models/SkillsRequests/skills_requests.dart';
@@ -53,6 +54,15 @@ class SkillsRequestdAction {
           type: ToastificationType.success);
       AppNavigator.navigateBack(context);
       Utils.cancelLoading(context);
+
+      // after that send a notification to the receiveing user as well.
+
+      await SendNotificationService.sendNotificationUsingApi(
+          fcmTokenOfReceiver: doc.fcmToken,
+          data: {},
+          title: "Learning Request Received",
+          body:
+              '${user.name} has requested to learn your course: ${doc.title}.');
     } else {
       Utils.toastMsg(
           title: "Request Failed",

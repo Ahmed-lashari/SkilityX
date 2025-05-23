@@ -20,7 +20,7 @@ class SignupAction {
       Utils.showLoading(context);
       Users user = ref.read(userModelDi);
       if (user.profilePicUrl.isNotEmpty) {
-        // ref.read(userModelDi.notifier).updateTextDetails(ref);
+        ref.read(userModelDi.notifier).updateTextDetails(ref);
 
         final String email =
             ref.read(controllerTextProvider(TextControllerKeys.emailKey));
@@ -53,9 +53,9 @@ class SignupAction {
           }
           final isSaved = await HiveuserDataRepo.saveUserData(userWithId, ref);
           if (isSaved) {
+            Utils.cancelLoading(context);
             await AppNavigator.navigateTo(context,
                 wRoute: HomeTabs(user: userWithId));
-            Utils.cancelLoading(context);
           } else {
             debugPrint("FALSE RETURNED WHILE SAVING USER DATA IN THE HIVE.");
           }
