@@ -59,3 +59,7 @@ android/app/google-services.json
 
 
 .env
+
+
+# notification priv key
+skilityx-22a24-firebase-adminsdk-fbsvc-b246e3ee0e.json
