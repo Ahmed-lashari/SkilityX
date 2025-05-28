@@ -9,6 +9,7 @@ import 'package:skility_x/view/widgets/bottom_sheets/received_request_status.dar
 import 'package:skility_x/view/widgets/bottom_sheets/sent_request_deletion.dart';
 import 'package:skility_x/view/widgets/custom_widgets.dart';
 import 'package:skility_x/view/widgets/image_ui.dart';
+import 'package:toastification/toastification.dart';
 
 class RequestCard extends StatelessWidget {
   final FilterColorModel colorModel;
@@ -141,7 +142,7 @@ class RequestCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis),
             ),
             Text(
-              data.status,
+              data.status == 'Sent' ? 'Seen' : 'Accepted',
               maxLines: 4,
               textAlign: TextAlign.justify,
               style: TextStyle(
@@ -213,10 +214,16 @@ class RequestCard extends StatelessWidget {
           ),
           (data.fromUserId != FirebaseManager.user?.uid)
               ? IconButton(
-                  onPressed: () => CustomWidgets.customBottomSheet(
-                      context,
-                      BottomSheetReceivedReq(colorModel: colorModel),
-                      colorModel.boxColor),
+                  onPressed: data.status != "Sent"
+                      ? () => Utils.toastMsg(
+                            title: 'Request Already Accepted',
+                            type: ToastificationType.info,
+                          )
+                      : () => CustomWidgets.customBottomSheet(
+                          context,
+                          BottomSheetReceivedReq(
+                              colorModel: colorModel, reqDoc: data),
+                          colorModel.boxColor),
                   icon: CustomIcon(
                     icon: AppImageIcons.rightarrow,
                     color: colorModel.textColor,
@@ -254,13 +261,27 @@ class RequestCard extends StatelessWidget {
       spacing: 10,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          data.skillsOffered,
-          style: TextStyle(
-              color: colorModel.textColor,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              overflow: TextOverflow.ellipsis),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              data.skillsOffered,
+              style: TextStyle(
+                  color: colorModel.textColor,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  overflow: TextOverflow.ellipsis),
+            ),
+            if (data.status != "Sent")
+              Text(
+                data.senderContactNumber,
+                style: TextStyle(
+                    color: colorModel.textColor,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    overflow: TextOverflow.ellipsis),
+              ),
+          ],
         ),
         Text(
           data.message,

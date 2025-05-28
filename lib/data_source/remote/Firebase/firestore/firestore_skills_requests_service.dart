@@ -72,4 +72,11 @@ class FirestoreSkillsRequestService {
 
     return data;
   }
+
+  static Future<void> acceptRequest(SkillsRequests req) async {
+    await FirebaseManager.firestore
+        .collection(FirestoreCollectionKeys.skills_rrquests)
+        .doc(req.requestId)
+        .update(req.toJson());
+  }
 }
