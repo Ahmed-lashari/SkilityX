@@ -80,12 +80,12 @@ class GoogleOauthAction {
             await FirestoreUserDataRepo.updateUserData(updatedDoc);
 
         if (isUpdated) {
-          await HiveuserDataRepo.saveUserData(firebaseData, ref);
+          await HiveuserDataRepo.saveUserData(updatedDoc, ref);
           // naviagate to home
           Utils.cancelLoading(context);
 
           await AppNavigator.navigateTo(context,
-              wRoute: HomeTabs(user: firebaseData));
+              wRoute: HomeTabs(user: updatedDoc));
         }
       } else {
         debugPrint(
