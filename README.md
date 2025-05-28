@@ -14,7 +14,7 @@
 - 🧠 Skill-based **user onboarding**
 - 🤝 Send and receive **requests** to connect with other users
 - 🗂️ Clean MVVM + Riverpod state management architecture
-- ☁️ Firebase integration -> Firestore + Auth + Cloud Messaging + Crashlytics [Planned]
+- ☁️ Firebase integration -> Firestore + Auth + Cloud Messaging(Android) + Crashlytics [Integrated]
 - 💬 Contact sharing after request acceptance
 - ✨ Beautiful and intuitive UI for both **skill seekers** and **skill sharers**.
 
@@ -35,7 +35,7 @@
  | ----------------------------------------------------- | ------------------------------------------------------- |
  | ![SignupScreen](assets/ss/signup.png)          | ![SignupScreen2](assets/ss/signup2.png)               |
 
- | User Profile                                         | Settings Screen (further options will be added)                                          |
+ | User Profile                                         | Settings Screen (further options can be added)                                          |
  | ----------------------------------------------------- | ------------------------------------------------------- |
  | ![Profile](assets/ss/profile.png)          | ![Settings](assets/ss/settings.png)               |
 
@@ -72,15 +72,14 @@
 
 ## 🔍 Testing Strategy
 
-* Widget Testing: For individual UI components (will be the next step)
-* Integration Testing: For flow-based testing (to be implemented)
-* Unit Testing: ViewModels and Services (planned)
 
+* Integration Testing: For flow-based testing
+> Only inegrated tests for some important features are written.
 ---
 
 ## 🔔 Firebase Firestore Structure
 
-> Will be shared after complete backend implementation.
+> Will be shared
 
 ---
 
@@ -89,7 +88,7 @@
 The current version is a **Flutter UI + Firebase integrated**, but to make SkilityX a scalable and production-ready app, the following enhancements are **planned**:
 
 * 🔔 Push Notifications (for iOS)
-* 🎯 Backend role-based access and security
+* 🎯 Further responsive UI as per user actions.
 
 ---
 

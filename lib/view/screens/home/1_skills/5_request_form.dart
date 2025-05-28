@@ -43,14 +43,13 @@ class Skill_RequestFormState extends ConsumerState<SkillRequestForm> {
           ),
           _buildForm(),
           Hero(
-            tag: "${HeroKeys.actionButtonKey}_${widget.index}",
-            child: CustomWidgets.actionButton(
-                label: "Submit Request",
-                backgroundColor: widget.color.boxColor,
-                textColor: widget.color.textColor,
-                onPressed: () => SkillsRequestdAction.sendRequest(
-                    context, ref, formKey, widget.data)),
-          )
+              tag: "${HeroKeys.actionButtonKey}_${widget.index}",
+              child: CustomWidgets.actionButton(
+                  label: "Submit Request",
+                  backgroundColor: widget.color.boxColor,
+                  textColor: widget.color.textColor,
+                  onPressed: () => SkillsRequestdAction.sendRequest(
+                      context, ref, formKey, widget.data)))
         ],
       ),
     );

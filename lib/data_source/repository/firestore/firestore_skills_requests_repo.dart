@@ -42,4 +42,14 @@ class FirestoreSkillsRequestsRepo {
       return [];
     }
   }
+
+  static Future<bool> acceptRequest(SkillsRequests reqDoc) async {
+    try {
+      await FirestoreSkillsRequestService.acceptRequest(reqDoc);
+      return true;
+    } catch (e, h) {
+      Utils.handleError(e.toString(), h);
+      return false;
+    }
+  }
 }
